@@ -16,7 +16,7 @@
 | 成立年限               | ths_found_years_fund               | 交易日 | 无           |
 | 机构投资者持有比例     | ths_org_investor_held_ratio_fund   | 报告期 | **季度数据** |
 | 股票市值占基金资产净值 | ths_stock_mv_to_fanv_fund          | 报告期 | **季度数据** |
-<font color='red'> 特殊处理： </font>
+
 **筛选条件：**
 
 1. 每期基金规模：>=2亿 
