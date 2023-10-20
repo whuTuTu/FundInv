@@ -8,13 +8,13 @@
 用于储存指标计算的函数
 """
 import numpy as np
-
+import  pandas as pd
 
 def netvalue2return(netvalue4list):
     """
     将基金净值转变为收益率序列
     :param netvalue4list:
-    :return:
+    :return:初期为0
     """
     returns = [0]
     n = len(netvalue4list)
@@ -25,6 +25,19 @@ def netvalue2return(netvalue4list):
             returns.append((netvalue4list[i + 1] - netvalue4list[i]) / netvalue4list[i])
 
     return returns
+
+def returns2cumreturns(returns):
+    """
+    收益率序列转化为累计收益率序列
+    :param returns:
+    :return:
+    """
+    cumreturns = []
+    cumreturn = 0
+    for oneret in returns:
+        cumreturn = (1+cumreturn)*(1+oneret)-1
+        cumreturns.append(cumreturn)
+    return cumreturns
 
 def calculate_one_cum_return(netvalue4list):
     """
@@ -117,8 +130,18 @@ def calculate_excess_sharpe_ratio(netvalue4list, standard_netvalue4list):
     returns = netvalue2return(netvalue4list)
     return np.mean(excess_returns)/np.std(returns)
 
-# def calculate_excess_max_drawdown(netvalue4list, standard_netvalue4list):
-
+def calculate_excess_max_drawdown(netvalue4list, standard_netvalue4list):
+    """
+    超额最大回撤
+    :param netvalue4list:
+    :param standard_netvalue4list:
+    :return:
+    """
+    excess_returns = calculate_excess_returns(netvalue4list, standard_netvalue4list)
+    excess_cum_returns = returns2cumreturns(excess_returns) # 起点是0
+    excess_net = [i+1 for i in excess_cum_returns]
+    excess_max_drawdown = calculate_max_drawdown(excess_net)
+    return excess_max_drawdown
 
 def calculate_excess_win_rate(netvalue4list, standard_netvalue4list):
     """
@@ -147,6 +170,38 @@ def calculate_excess_odds_ratio(netvalue4list, standard_netvalue4list):
     positive_returns = np.mean([r for r in excess_returns if r > 0])
     odds_ratio = positive_returns / negative_returns
     return odds_ratio
+
+def exchangedate1(YearDate):
+    """
+    将20200101变成2020-01-01
+    :param YearDate:
+    :return:
+    """
+    return YearDate[0:4] + '-' + YearDate[4:6] + '-' + YearDate[6::]
+
+def df2list(df1):
+    """
+    将pd的第一列df.iloc[:,0]变成list
+    :param df1:
+    :return:
+    """
+    fund0 = df1.iloc[:, [0]].values.tolist()
+    fund0 = [item for sublist in fund0 for item in sublist]
+    return fund0
+
+def getchunzhaicode():
+    """
+    读文件获取筛选后的基金代码，输出list
+    :return:
+    """
+    cunzhai4df = pd.read_csv("output/chunzhai.csv")
+    cunzhai4df.drop('Unnamed: 0', axis=1, inplace=True)
+    return df2list(cunzhai4df.iloc[:, [0]])
+
+
+
+
+
 
 
 

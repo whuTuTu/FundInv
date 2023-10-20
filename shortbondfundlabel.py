@@ -6,11 +6,13 @@
 @Author  ：tutu
 @Date    ：2023-10-10 14:46
 """
+
 # 载入包
 from iFinDPy import *  # 同花顺API接口
 import pandas as pd
 import warnings
-from bondfundfilter import BondFirstFilter
+
+from getfunction import getchunzhaicode
 
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 
@@ -22,17 +24,17 @@ def getfundcompany(endDate, apikey):
     :param apikey:
     :return:
     """
-    cunzhai = pd.read_csv("output/chunzhai.csv")
-    cunzhai.drop('Unnamed: 0', axis=1, inplace=True)
+    chunzhai4list = getchunzhaicode()
+
 
     # 基金公司标签
-    grouped_sum = cunzhai.groupby(['ths_fund_supervisor_fund'])['ths_mergesize_fund'].sum()
+    grouped_sum = cunzhai4df.groupby(['ths_fund_supervisor_fund'])['ths_mergesize_fund'].sum()
     sorted_sum = grouped_sum.sort_values(ascending=False)
-    cunzhai['基金公司规模'] = cunzhai.apply(lambda row: sorted_sum.get((row['ths_fund_supervisor_fund']), default=0),
+    cunzhai4df['基金公司规模'] = cunzhai4df.apply(lambda row: sorted_sum.get((row['ths_fund_supervisor_fund']), default=0),
                                             axis=1)
-    cunzhai['基金公司标签'] = '小基金公司'
-    cunzhai.iloc[:int(len(cunzhai) * 0.2), cunzhai.columns.get_loc('基金公司标签')] = '大基金公司'
-    return cunzhai[['thscode', '基金公司标签']]
+    cunzhai4df['基金公司标签'] = '小基金公司'
+    cunzhai4df.iloc[:int(len(cunzhai4df) * 0.2), cunzhai4df.columns.get_loc('基金公司标签')] = '大基金公司'
+    return cunzhai4df[['thscode', '基金公司标签']]
 
 
 def gettime(endDate, apikey):
@@ -125,3 +127,16 @@ def getbondtype(endDate, apikey):
     result = result.sort_values(by='ratio_num', ascending=False)
     result.rename(columns={'jydm': 'thscode'}, inplace=True)
     return result[['thscode', 'bondfundtype']]
+
+
+def getdingkai(endDate, apikey):
+    """
+    获取定开指标,1表示定开，0表示非定开
+    :param endDate:
+    :param apikey:
+    :return:
+    """
+    cunzhai = pd.read_csv("output/chunzhai.csv")
+    cunzhai.drop('Unnamed: 0', axis=1, inplace=True)
+    cunzhai['是否为定开'] = cunzhai['ths_fund_short_name_fund'].str.contains("定开").astype(int)
+    return cunzhai[['thscode', '是否为定开']]

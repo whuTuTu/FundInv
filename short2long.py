@@ -7,16 +7,15 @@
 @Date    ：2023-08-23 13:57
 短期标签变成长期标签
 """
-
 from IndShort import shortInd
 from StyleShort import StyleShort
 import pandas as pd
 from shortbondfundlabel import getfundcompany, gettime, getlever, getbondtype
 import warnings
+
 warnings.filterwarnings(action='ignore')
 
-
-def getlong(lastYearDate,lastQuarDate, apikey, flag):
+def getlong(lastYearDate, lastQuarDate, apikey, flag):
     """
     股基的短期标签变成长期标签，包括行业和大小盘和成长价值风格三个标签
     :param lastYearDate: 年报/半年报交易日
@@ -39,7 +38,7 @@ def getlong(lastYearDate,lastQuarDate, apikey, flag):
             continue
     # 季度时间
     endyear = lastQuarDate[0:4]
-    monthday = ['0331','0630','0930','1231']
+    monthday = ['0331', '0630', '0930', '1231']
     aRepDate = [str(i) + j for i in range(int(beginyear), int(endyear) + 1) for j in monthday]
     repDateQ = []
     for i in aRepDate:
@@ -121,8 +120,7 @@ def getlong(lastYearDate,lastQuarDate, apikey, flag):
         return df2[['thscode', 'independent']]
 
 
-
-def bond4long(lastYearDate,lastQuarDate, apikey, flag):
+def bond4long(lastYearDate, lastQuarDate, apikey, flag):
     """
     债券基金
     :param lastYearDate: 年报/半年报交易日
@@ -145,7 +143,7 @@ def bond4long(lastYearDate,lastQuarDate, apikey, flag):
             continue
     # 季度时间
     endyear = lastQuarDate[0:4]
-    monthday = ['0331','0630','0930','1231']
+    monthday = ['0331', '0630', '0930', '1231']
     aRepDate = [str(i) + j for i in range(int(beginyear), int(endyear) + 1) for j in monthday]
     repDateQ = []
     for i in aRepDate:
@@ -196,7 +194,7 @@ def bond4long(lastYearDate,lastQuarDate, apikey, flag):
             if i == 0:
                 df2 = df1
             else:
-                df2 = pd.merge(df2, df1, on='thscode',how='left')
+                df2 = pd.merge(df2, df1, on='thscode', how='left')
 
         indtype_columns = [col for col in df2.columns if col.startswith("杠杆比例标签")]
         df2['lever'] = df2.apply(lambda row: f"稳定{row[indtype_columns[0]]}" if all(
@@ -221,7 +219,3 @@ def bond4long(lastYearDate,lastQuarDate, apikey, flag):
 
         df2.to_csv("output/bondtype_Stable.csv")
         return df2[['thscode', 'bondtype']]
-
-
-
-
