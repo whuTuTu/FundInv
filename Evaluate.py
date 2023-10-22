@@ -126,6 +126,6 @@ for onecode in partfundcode4list:
     chunzhai_index4list = chunzhai_index4df.loc[getfunction.exchangedate1(start_date):getfunction.exchangedate1(end_date),'close'].values.tolist()
     cumreturn3Y4list.append(getfunction.calculate_one_cum_return(onenetvalue4list))
     
-print(cumreturn3Y4list) #
+print(cumreturn3Y4list)
 
 
