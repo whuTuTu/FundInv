@@ -273,10 +273,10 @@
 | 夏普比率     | calculate_sharpe_ratio                                       | $(r_p-r_f)/\sigma(p)$                                        | ×无风险收益率取值？    |
 | 最大回撤     | calculate_max_drawdown                                       | 计算回撤序列$(onevalue - peak) / peak$，取max                | √                      |
 | 胜率         | calculate_win_rate                                           | 统计区间内基金收益率超大于0的周期数与总周期数之比            | √                      |
-| 赔率         | calculate_odds_ratio                                         | 又名盈亏比，获取区间内，平均盈利/平均损失。衡量基金每承担一单位亏损，可获得多少盈利 | 与艺璇核对，算法有出入 |
+| 赔率         | calculate_odds_ratio                                         | 又名盈亏比，获取区间内，平均盈利/平均损失。衡量基金每承担一单位亏损，可获得多少盈利 | √ |
 | ---------    | ----------------------------------------------------------   | ----------------------------------------------------------------------------- | --------------         |
 | 超额收益率   | calculate_excess_returns                                     | $(1+基金涨幅)/(1+基准涨幅)-1$                                | √                      |
-| 超额夏普比率 | calculate_excess_sharpe_ratio                                | $超额收益均值/基金波动率$                                    | √待确认                |
+| 超额夏普比率 | calculate_excess_sharpe_ratio                                | $超额收益均值/基金波动率$                                    | √               |
 | 超额最大回撤 | calculate_excess_max_drawdown                                |                                                              | ×                      |
 | 超额胜率     | calculate_excess_win_rate                                    | 统计区间内基金收益率超越标的指数的周期数与总周期数之比       | √                      |
 | 超额赔率     | calculate_excess_odds_ratio                                  | 用超额收益计算，平均盈利/平均损失                            | √                      |
