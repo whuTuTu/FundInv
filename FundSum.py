@@ -10,13 +10,11 @@ import pandas as pd
 import time
 import matplotlib.pyplot as plt
 
-from bondfundfilter import BondFirstFilter
+from InvokingFunction.BondfundFirstfilter import BondFirstFilter
+from InvokingFunction.GetShortbondfundLabel import getdingkai
 from firstfilter import FirstFilter
-from short2long import getlong, bond4long
-from IndependentFund import getIndependent
+from InvokingFunction.Short2Long import Getstockfund4Long, Getbondfund4Long
 import warnings
-
-warnings.filterwarnings(action='ignore')
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 解决中文显示乱码的问题
 plt.rcParams['axes.unicode_minus'] = False
@@ -36,22 +34,23 @@ choice = 'bond'
 if choice == 'stock':
     print("——————————————————————————————————第一次筛选———————————————————————————————————————")
     myfund = FirstFilter(endDate, apikey)
+
     print("第一次筛选运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取行业主题标签——————————————————————————————")
-    Ind4df = getlong(lastYearDate, lastQuarDate, apikey, 1)
+    Ind4df = Getstockfund4Long(lastYearDate, lastQuarDate, apikey, 1)
     print("获取行业主题标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取大小盘标签——————————————————————————————")
-    marketvalue4df = getlong(lastYearDate, lastQuarDate, apikey, 2)
+    marketvalue4df = Getstockfund4Long(lastYearDate, lastQuarDate, apikey, 2)
     print("获取大小盘标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取风格标签——————————————————————————————")
-    style4df = getlong(lastYearDate, lastQuarDate, apikey, 3)
+    style4df = Getstockfund4Long(lastYearDate, lastQuarDate, apikey, 3)
     print("获取风格标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取共振因子标签———————————————————————————————————")
-    h4df = getlong(lastQuarDate, lastQuarDate, apikey, 4)
+    h4df = Getstockfund4Long(lastQuarDate, lastQuarDate, apikey, 4)
     print("获取共振因子标签运行时间：", time.perf_counter() - start, "秒")
 
     # 合并数据
@@ -93,35 +92,40 @@ if choice == 'stock':
 if choice == 'bond':
     print("——————————————————————————————————第一次筛选———————————————————————————————————————")
     myfund = BondFirstFilter(endDate, apikey)
-    cunzhai = myfund[0]
+    chunzhai = myfund[0]
     zhuanzhai = myfund[1]
     print("第一次筛选运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取基金公司标签——————————————————————————————")
-    company4df = bond4long(lastYearDate,lastQuarDate, apikey, 1)
+    company4df = Getbondfund4Long(lastYearDate, lastQuarDate, apikey, 1)
     print("获取基金公司标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取久期标签——————————————————————————————")
-    time4df = bond4long(lastYearDate,lastQuarDate, apikey, 2)
+    time4df = Getbondfund4Long(lastYearDate, lastQuarDate, apikey, 2)
     print("获取久期标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取杠杆比例标签——————————————————————————————")
-    lever4df = bond4long(lastYearDate,lastQuarDate, apikey, 3)
+    lever4df = Getbondfund4Long(lastYearDate, lastQuarDate, apikey, 3)
     print("获取杠杆比例标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取债券种类标签——————————————————————————————")
-    bondtype4df = bond4long(lastYearDate,lastQuarDate, apikey, 4)
+    bondtype4df = Getbondfund4Long(lastYearDate, lastQuarDate, apikey, 4)
     print("获取债券种类标签运行时间：", time.perf_counter() - start, "秒")
 
-    cunzhai = pd.merge(cunzhai[['thscode', 'ths_fund_short_name_fund', 'ths_fund_manager_current_fund',
-                                'ths_invest_type_second_classi_fund']], company4df, on='thscode', how='left')
-    cunzhai = pd.merge(cunzhai, time4df, on='thscode', how='left')
-    cunzhai = pd.merge(cunzhai, lever4df, on='thscode', how='left')
-    cunzhai = pd.merge(cunzhai, bondtype4df, on='thscode', how='left')
-    cunzhai.to_csv('output/chunzhai_label.csv')
+    print("——————————————————————————————————获取定开标签——————————————————————————————")
+    dingkai4df = getdingkai()
+    print("获取定开标签运行时间：", time.perf_counter() - start, "秒")
 
-    for item in ['bigcompany', 'Duration', 'lever', 'bondtype']:
-        types = cunzhai[item].dropna().unique().tolist()
+    chunzhai = pd.merge(chunzhai[['thscode', 'ths_fund_short_name_fund', 'ths_fund_manager_current_fund',
+                                  'ths_invest_type_second_classi_fund']], company4df, on='thscode', how='left')
+    chunzhai = pd.merge(chunzhai, time4df, on='thscode', how='left')
+    chunzhai = pd.merge(chunzhai, lever4df, on='thscode', how='left')
+    chunzhai = pd.merge(chunzhai, bondtype4df, on='thscode', how='left')
+    chunzhai = pd.merge(chunzhai, dingkai4df, on='thscode', how='left')
+    chunzhai.to_csv('output/ChunzhaiFund/chunzhai_label.csv')
+
+    for item in ['bigcompany', 'Duration', 'lever', 'bondtype','是否为定开']:
+        types = chunzhai[item].dropna().unique().tolist()
         for i in range(len(types)):
-            fund0 = cunzhai[cunzhai[item] == types[i]]
+            fund0 = chunzhai[chunzhai[item] == types[i]]
             print("{}基金的个数为：{}".format(types[i], len(fund0)))

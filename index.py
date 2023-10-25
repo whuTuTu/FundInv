@@ -15,10 +15,9 @@ import plotly.graph_objects as go
 import plotly.offline as py_offline
 import matplotlib.pyplot as plt
 
-from IndShort import shortInd
 from StyleShort import StyleShort
 from firstfilter import FirstFilter
-from short2long import getlong
+from InvokingFunction.Short2Long import Getstockfund4Long
 from IndependentFund import getIndependent
 import warnings
 warnings.filterwarnings(action='ignore')
@@ -147,7 +146,7 @@ if ind_flag:
     len_time = len(YearDate) - 1
     for i in range(len_time):
         print("---------------------{}------------------------".format(YearDate[i]))
-        StyleShort = getlong(YearDate[i], apikey)
+        StyleShort = Getstockfund4Long(YearDate[i], apikey)
         print("已获取{}的行业风格因子标签数据".format(YearDate[i]))
 
         # 合并数据
@@ -225,7 +224,7 @@ if style_flag:
 
         # 合并数据
         MyFundDF = pd.merge(myfund, styleshortdf, on='thscode', how='left')
-        MyFundDF = pd.merge(MyFundDF, getlong(YearDate[i], apikey,1), on='thscode', how='left')
+        MyFundDF = pd.merge(MyFundDF, Getstockfund4Long(YearDate[i], apikey, 1), on='thscode', how='left')
 
         # 读取数据
         fund = MyFundDF.iloc[:, [0]].values.tolist()

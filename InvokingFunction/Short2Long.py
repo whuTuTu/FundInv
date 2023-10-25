@@ -1,21 +1,26 @@
 # -*- coding: UTF-8 -*-
 """
 @Project ：FundInv 
-@File    ：short2long.py
+@File    ：Short2Long.py
 @IDE     ：PyCharm 
 @Author  ：tutu
 @Date    ：2023-08-23 13:57
 短期标签变成长期标签
 """
+
 from IndShort import shortInd
+from InvokingFunction.GetFunction import getHYtime4list, getQtime4liet
+from InvokingFunction.GetShortbondfundLabel import getfundcompany, getbondtype, getlever, getduration
 from StyleShort import StyleShort
 import pandas as pd
-from shortbondfundlabel import getfundcompany, gettime, getlever, getbondtype
+import os
 import warnings
-
 warnings.filterwarnings(action='ignore')
+# 更改相对路径
+path = "D:\TFCode\FundInv"
+os.chdir(path)
 
-def getlong(lastYearDate, lastQuarDate, apikey, flag):
+def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     """
     股基的短期标签变成长期标签，包括行业和大小盘和成长价值风格三个标签
     :param lastYearDate: 年报/半年报交易日
@@ -120,7 +125,7 @@ def getlong(lastYearDate, lastQuarDate, apikey, flag):
         return df2[['thscode', 'independent']]
 
 
-def bond4long(lastYearDate, lastQuarDate, apikey, flag):
+def Getbondfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     """
     债券基金
     :param lastYearDate: 年报/半年报交易日
@@ -130,27 +135,8 @@ def bond4long(lastYearDate, lastQuarDate, apikey, flag):
     """
     # ------------------------------------------生成相关时间变量--------------------------------------------------------
     beginDate = "20180101"
-    # 半年度时间
-    beginyear = beginDate[0:4]
-    endyear = lastYearDate[0:4]
-    monthday = ['0630', '1231']
-    aRepDate = [str(i) + j for i in range(int(beginyear), int(endyear) + 1) for j in monthday]
-    repDateY = []
-    for i in aRepDate:
-        if lastYearDate >= i >= beginDate:
-            repDateY.append(i)
-        else:
-            continue
-    # 季度时间
-    endyear = lastQuarDate[0:4]
-    monthday = ['0331', '0630', '0930', '1231']
-    aRepDate = [str(i) + j for i in range(int(beginyear), int(endyear) + 1) for j in monthday]
-    repDateQ = []
-    for i in aRepDate:
-        if lastQuarDate >= i >= beginDate:
-            repDateQ.append(i)
-        else:
-            continue
+    repDateHY = getHYtime4list(beginDate, lastYearDate)
+    repDateQ = getQtime4liet(beginDate, lastQuarDate)
     # ------------------------------------------以下为代码--------------------------------------------------------
     if flag == 1:
         # 基金公司
@@ -166,13 +152,13 @@ def bond4long(lastYearDate, lastQuarDate, apikey, flag):
         df2['bigcompany'] = df2.apply(lambda row: f"稳定{row[indtype_columns[0]]}" if all(
             row[col] == row[indtype_columns[0]] for col in indtype_columns) else '轮动基金', axis=1)
 
-        df2.to_csv("output/Company_Stable.csv")
+        df2.to_csv("output/ChunzhaiFund/Company_stable.csv")
         return df2[['thscode', 'bigcompany']]
 
     if flag == 2:
         # 久期
         for i in range(6):
-            df1 = gettime(repDateQ[-(i + 1)], apikey)
+            df1 = getduration(repDateQ[-(i + 1)], apikey)
             df1.columns = ['thscode', '久期标签' + repDateQ[-(i + 1)]]
             if i == 0:
                 df2 = df1
@@ -183,7 +169,7 @@ def bond4long(lastYearDate, lastQuarDate, apikey, flag):
         df2['Duration'] = df2.apply(lambda row: f"稳定{row[indtype_columns[0]]}" if all(
             row[col] == row[indtype_columns[0]] for col in indtype_columns) else '轮动基金', axis=1)
 
-        df2.to_csv("output/duration_Stable.csv")
+        df2.to_csv("output/ChunzhaiFund/duration_stable.csv")
         return df2[['thscode', 'Duration']]
 
     if flag == 3:
@@ -200,14 +186,14 @@ def bond4long(lastYearDate, lastQuarDate, apikey, flag):
         df2['lever'] = df2.apply(lambda row: f"稳定{row[indtype_columns[0]]}" if all(
             row[col] == row[indtype_columns[0]] for col in indtype_columns) else '轮动基金', axis=1)
 
-        df2.to_csv("output/lever_Stable.csv")
+        df2.to_csv("output/ChunzhaiFund/lever_stable.csv")
         return df2[['thscode', 'lever']]
 
     if flag == 4:
         # 债券种类
         for i in range(6):
-            df1 = getbondtype(repDateY[-(i + 1)], apikey)
-            df1.columns = ['thscode', 'bondfundtype' + repDateQ[-(i + 1)]]
+            df1 = getbondtype(repDateHY[-(i + 1)], apikey)
+            df1.columns = ['thscode', 'bondfundtype' + repDateHY[-(i + 1)]]
             if i == 0:
                 df2 = df1
             else:
@@ -217,5 +203,5 @@ def bond4long(lastYearDate, lastQuarDate, apikey, flag):
         df2['bondtype'] = df2.apply(lambda row: f"稳定{row[indtype_columns[0]]}" if all(
             row[col] == row[indtype_columns[0]] for col in indtype_columns) else '轮动基金', axis=1)
 
-        df2.to_csv("output/bondtype_Stable.csv")
+        df2.to_csv("output/ChunzhaiFund/bondtype_stable.csv")
         return df2[['thscode', 'bondtype']]

@@ -1,15 +1,20 @@
 # -*- coding: UTF-8 -*-
 """
-@Project ：FundInv
-@File    ：getfunction.py
-@IDE     ：PyCharm
-@Author  ：tutu
-@Date    ：2023-09-15 14:46
-用于储存指标计算的函数
+@Project :FundInv
+@File    :GetQuantitativeIndex.py
+@IDE     :Pycharm
+@Author  :tutu
+@Date    :2023/10/22 23:19
+计算量化指标
 """
+# 载入包
 import numpy as np
-import  pandas as pd
+import os
+# 更改相对路径
+path = "D:\TFCode\FundInv"
+os.chdir(path)
 
+# ------------------------------------------量化指标-------------------------------------------------
 def netvalue2return(netvalue4list):
     """
     将基金净值转变为收益率序列
@@ -19,11 +24,10 @@ def netvalue2return(netvalue4list):
     returns = [0]
     n = len(netvalue4list)
     for i in range(n):
-        if i == n:
+        if i == (n-1):
             pass
         else:
             returns.append((netvalue4list[i + 1] - netvalue4list[i]) / netvalue4list[i])
-
     return returns
 
 def returns2cumreturns(returns):
@@ -104,7 +108,7 @@ def calculate_odds_ratio(netvalue4list):
     odds_ratio = positive_returns / negative_returns
     return odds_ratio
 
-
+# ------------------------------------------超额指标-------------------------------------------------
 def calculate_excess_returns(netvalue4list,standard_netvalue4list):
     """
     计算超额收益
@@ -118,6 +122,28 @@ def calculate_excess_returns(netvalue4list,standard_netvalue4list):
     standard_returns = np.array(standard_returns)
     excess_returns = (1 + fund_returns) / (1 + standard_returns) - 1
     return excess_returns.tolist()
+
+def calculate_excess_one_cum_return(netvalue4list,standard_netvalue4list):
+    """
+    计算累计超额收益
+    :param netvalue4list:
+    :param standard_netvalue4list:
+    :return:
+    """
+    excess_returns = calculate_excess_returns(netvalue4list, standard_netvalue4list)
+    excess_cum_returns = returns2cumreturns(excess_returns)  # 起点是0
+    return excess_cum_returns[-1]
+
+def calculate_excess_cum_returns(netvalue4list,standard_netvalue4list):
+    """
+    计算累计超额收益序列
+    :param netvalue4list:
+    :param standard_netvalue4list:
+    :return:
+    """
+    excess_returns = calculate_excess_returns(netvalue4list, standard_netvalue4list)
+    excess_cum_returns = returns2cumreturns(excess_returns)  # 起点是0
+    return excess_cum_returns
 
 def calculate_excess_sharpe_ratio(netvalue4list, standard_netvalue4list):
     """
@@ -171,37 +197,4 @@ def calculate_excess_odds_ratio(netvalue4list, standard_netvalue4list):
     odds_ratio = positive_returns / negative_returns
     return odds_ratio
 
-def exchangedate1(YearDate):
-    """
-    将20200101变成2020-01-01
-    :param YearDate:
-    :return:
-    """
-    return YearDate[0:4] + '-' + YearDate[4:6] + '-' + YearDate[6::]
-
-def df2list(df1):
-    """
-    将pd的第一列df.iloc[:,0]变成list
-    :param df1:
-    :return:
-    """
-    fund0 = df1.iloc[:, [0]].values.tolist()
-    fund0 = [item for sublist in fund0 for item in sublist]
-    return fund0
-
-def getchunzhaicode():
-    """
-    读文件获取筛选后的基金代码，输出list
-    :return:
-    """
-    cunzhai4df = pd.read_csv("output/chunzhai.csv")
-    cunzhai4df.drop('Unnamed: 0', axis=1, inplace=True)
-    return df2list(cunzhai4df.iloc[:, [0]])
-
-
-
-
-
-
-
-
+# ------------------------------------------年化指标-------------------------------------------------
