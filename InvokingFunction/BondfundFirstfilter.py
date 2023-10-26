@@ -5,7 +5,7 @@
 @IDE     ：PyCharm
 @Author  ：tutu
 @Date    ：2023-10-10 14:52
-债券基金筛选，一般只在
+债券基金筛选
 """
 from iFinDPy import *  # 同花顺API接口
 import pandas as pd
