@@ -9,10 +9,9 @@
 import pandas as pd
 import time
 import matplotlib.pyplot as plt
-
 from InvokingFunction.BondfundFirstfilter import BondFirstFilter
 from InvokingFunction.GetShortbondfundLabel import getdingkai
-from firstfilter import FirstFilter
+from InvokingFunction.StockfundFirstfilter import StockFirstFilter
 from InvokingFunction.Short2Long import Getstockfund4Long, Getbondfund4Long
 import warnings
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
@@ -26,73 +25,54 @@ start = time.perf_counter()  # 代码开始的时间
 endDate = "20230908"
 lastYearDate = "20230630"  # 年报/半年报报告期
 lastQuarDate = "20230630"  # 季报报告期
-apikey = []
-choice = 'bond'
+apikey = ['tfzq1928','232596']
+choice = 'stock'
 
 # ------------------------------------------以下为代码--------------------------------------------------------
 if choice == 'stock':
     print("——————————————————————————————————第一次筛选———————————————————————————————————————")
-    myfund = FirstFilter(endDate, apikey)
-
+    stockfund4df = StockFirstFilter(endDate, apikey)
     print("第一次筛选运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取行业主题标签——————————————————————————————")
-    Ind4df = Getstockfund4Long(lastYearDate, lastQuarDate, apikey, 1)
+    Ind4df = Getstockfund4Long(lastYearDate, lastYearDate, apikey, 1)
     print("获取行业主题标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取大小盘标签——————————————————————————————")
-    marketvalue4df = Getstockfund4Long(lastYearDate, lastQuarDate, apikey, 2)
+    marketvalue4df = Getstockfund4Long(lastYearDate, lastYearDate, apikey, 2)
     print("获取大小盘标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取风格标签——————————————————————————————")
-    style4df = Getstockfund4Long(lastYearDate, lastQuarDate, apikey, 3)
+    style4df = Getstockfund4Long(lastYearDate, lastYearDate, apikey, 3)
     print("获取风格标签运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取共振因子标签———————————————————————————————————")
     h4df = Getstockfund4Long(lastQuarDate, lastQuarDate, apikey, 4)
     print("获取共振因子标签运行时间：", time.perf_counter() - start, "秒")
 
+    print("——————————————————————————————————获取集中度标签———————————————————————————————————")
+    cr4df = Getstockfund4Long(lastQuarDate, lastQuarDate, apikey, 5)
+    print("获取集中度标签运行时间：", time.perf_counter() - start, "秒")
+
     # 合并数据
-    myfund = pd.merge(myfund, Ind4df, on='thscode', how='left')
-    myfund = pd.merge(myfund, marketvalue4df, on='thscode', how='left')
-    myfund = pd.merge(myfund, style4df, on='thscode', how='left')
-    myfund = pd.merge(myfund, h4df, on='thscode', how='left')
-    myfund.to_csv("output/stockfund_label.csv")
+    stockfund4df = pd.merge(stockfund4df, Ind4df, on='thscode', how='left')
+    stockfund4df = pd.merge(stockfund4df, marketvalue4df, on='thscode', how='left')
+    stockfund4df = pd.merge(stockfund4df, style4df, on='thscode', how='left')
+    stockfund4df = pd.merge(stockfund4df, h4df, on='thscode', how='left')
+    stockfund4df = pd.merge(stockfund4df, cr4df, on='thscode', how='left')
+    stockfund4df.to_csv("output/Stockfund/stockfund_label.csv")
 
-    types = myfund['Stable_Count'].dropna().unique().tolist()
-    for i in range(len(types)):
-        fund0 = myfund[myfund['Stable_Count'] == types[i]].iloc[:, [0]].values.tolist()
-        fund0 = [item for sublist in fund0 for item in sublist]
-        print("{}基金的个数为：{}".format(types[i], len(fund0)))
-
-    print("\n")
-    types = myfund[myfund['Stable_Count'] == '稳定行业均衡基金']['XStable'].dropna().unique().tolist()
-    for i in range(len(types)):
-        fund0 = myfund[myfund['Stable_Count'] == '稳定行业均衡基金'][myfund['XStable'] == types[i]].iloc[:,
-                [0]].values.tolist()
-        fund0 = [item for sublist in fund0 for item in sublist]
-        print("{}基金的个数为：{}".format(types[i], len(fund0)))
-
-    print("\n")
-    types = myfund[myfund['Stable_Count'] == '稳定行业均衡基金']['YStable'].dropna().unique().tolist()
-    for i in range(len(types)):
-        fund0 = myfund[myfund['Stable_Count'] == '稳定行业均衡基金'][myfund['YStable'] == types[i]].iloc[:,
-                [0]].values.tolist()
-        fund0 = [item for sublist in fund0 for item in sublist]
-        print("{}基金的个数为：{}".format(types[i], len(fund0)))
-
-    print("\n")
-    types = myfund['independent'].dropna().unique().tolist()
-    for i in range(len(types)):
-        fund0 = myfund[myfund['independent'] == types[i]].iloc[:, [0]].values.tolist()
-        fund0 = [item for sublist in fund0 for item in sublist]
-        print("{}基金的个数为：{}".format(types[i], len(fund0)))
+    for item in ['行业标签', '大小盘标签', '风格标签', '共振因子标签', '集中度标签']:
+        types = stockfund4df[item].dropna().unique().tolist()
+        for i in range(len(types)):
+            fund0 = stockfund4df[stockfund4df[item] == types[i]]
+            print("{}基金的个数为：{}".format(types[i], len(fund0)))
 
 if choice == 'bond':
     print("——————————————————————————————————第一次筛选———————————————————————————————————————")
-    myfund = BondFirstFilter(endDate, apikey)
-    chunzhai = myfund[0]
-    zhuanzhai = myfund[1]
+    stockfund4df = BondFirstFilter(endDate, apikey)
+    chunzhai = stockfund4df[0]
+    zhuanzhai = stockfund4df[1]
     print("第一次筛选运行时间：", time.perf_counter() - start, "秒")
 
     print("——————————————————————————————————获取基金公司标签——————————————————————————————")

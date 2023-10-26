@@ -1,70 +1,73 @@
 # -*- coding: UTF-8 -*-
 """
 @Project ：FundInv 
-@File    ：StyleShort.py
-@IDE     ：PyCharm
+@File    ：GetShortstockfundLabel.py
+@IDE     ：PyCharm 
 @Author  ：tutu
-@Date    ：2023-08-22 11:31
-本文件用于给基金打上风格标签。股票采用中信行业分类。数据要用基金的全部持仓
-该文件为风格短期标签
+@Date    ：2023-08-18 10:53
+股票基金的短期标签
 """
 
 # 载入包
-from iFinDPy import *  # 同花顺API接口
 import pandas as pd
-from MyFunction import *  # 同花顺API接口
+import numpy as np
 import warnings
+
+from InvokingFunction.GetData import GetstockindustryData, GetsfundastockData, GetstockstyleData, Getsfund10stockData, \
+    Getsfund10sumstockData
+from InvokingFunction.GetGFunction import getstockfundcode, exchangedate1
+from InvokingFunction.GetSFunction import getstock1industry, find_nearest_below1, find_nearest_above1
+
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 
 
-def StyleShort(lastYearDate, apikey):
+def getindustry(lastYearDate, apikey):
     """
-    基金池短期的风格标签
-    :param lastYearDate:季度报告期
-    :param apikey: list，["tfzq1556", "752862"]
+    获得股票基金短期的行业主题标签
+    :param lastYearDate:年报/半年报
+    :param apikey:
+    :return:
+    """
+    # 获取股票的行业分类数据
+    aStockIndDF = GetstockindustryData(lastYearDate, apikey)
+    aStockIndDF = getstock1industry(aStockIndDF)
+
+    # 获取基金池权益持仓数据
+    fundcode4list = getstockfundcode()
+    FundRatioDF = GetsfundastockData(fundcode4list, lastYearDate, apikey)
+    FundRatioDF.rename(columns={'p00475_f002': 'thscode', 'p00475_f009': 'ratio'}, inplace=True)
+    FundRatioDF['ratio_num'] = pd.to_numeric(FundRatioDF['ratio'], errors='coerce')
+    FundRatioDF = pd.merge(FundRatioDF, aStockIndDF, on='thscode', how='left')
+
+    # 分组求和
+    result = FundRatioDF.groupby(['jydm', 'IND'])['ratio_num'].sum().reset_index()
+    result = result.loc[result.groupby('jydm')['ratio_num'].idxmax()]
+    result = result.sort_values(by='ratio_num', ascending=False)
+
+    def generate_new_value(row):
+        if row['ratio_num'] > 60:
+            return row['IND'] + "行业基金"
+        else:
+            return '行业均衡基金'
+
+    result['INDtype'] = result.apply(generate_new_value, axis=1)
+    # print('{}行业标签成功匹配的基金比例为：{}/{}'.format(lastYearDate,len(result), len(MyFundList)))
+    result.rename(columns={'jydm': 'thscode'}, inplace=True)
+    return result[['thscode', 'INDtype']]
+
+
+def getstyle(lastYearDate, apikey):
+    """
+    获得股票基金短期的风格标签
+    :param lastYearDate:年报/半年报
+    :param apikey: list
     :return: 无返回，输出从csv文件
     """
-    # 接入同花顺API接口
-    thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
-    lastYearDate1 = lastYearDate[0:4] + '-' + lastYearDate[4:6] + '-' + lastYearDate[6::]
-
-    # 获取某一时间所有A股股票
-    allStock = THS_DR('p03291', 'date=' + lastYearDate + ';blockname=001005010;iv_type=allcontract', 'p03291_f002:Y',
-                      'format:dataframe').data.iloc[:, [0]].values.tolist()
-    allStock1 = [item for sublist in allStock for item in sublist]
-
-    # 尝试从本地文件读取数据
-    try:
-        aStockInfoDF = pd.read_csv("input/aStockInfoDF" + lastYearDate + ".csv")
-        aStockInfoDF.drop('Unnamed: 0', axis=1, inplace=True)
-    except FileNotFoundError:
-        print("本地文件不存在，尝试从接口获取数据...")
-        frequency = 700
-        n = int(len(allStock1) / frequency)
-
-        # 末期截面基础数据
-        aStockInfoDF = THS_BD(allStock1[n * frequency::],
-                              'ths_market_value_stock;ths_pb_latest_stock;ths_pe_ttm_stock;ths_ps_ttm_stock'
-                              ';ths_sq_np_yoy_stock;ths_revenue_yoy_sq_stock;ths_op_yoy_sq_stock'
-                              ';ths_the_citic_industry_stock',
-                              lastYearDate1 + ';' + lastYearDate1 + ',100;' + lastYearDate1 + ',100;' + lastYearDate1 + ',100;' + lastYearDate1 + ';' + lastYearDate1 + ';' + lastYearDate1 + ';100,' + lastYearDate).data
-        for i in range(n):
-            df1 = THS_BD(allStock1[i * frequency:(i + 1) * frequency],
-                         'ths_market_value_stock;ths_pb_latest_stock;ths_pe_ttm_stock;ths_ps_ttm_stock'
-                         ';ths_sq_np_yoy_stock;ths_revenue_yoy_sq_stock;ths_op_yoy_sq_stock'
-                         ';ths_the_citic_industry_stock',
-                         lastYearDate1 + ';' + lastYearDate1 + ',100;' + lastYearDate1 + ',100;' + lastYearDate1 + ',100;' + lastYearDate1 + ';' + lastYearDate1 + ';' + lastYearDate1 + ';100,' + lastYearDate).data
-            aStockInfoDF = pd.concat([aStockInfoDF, df1])
-            # print("aStockInfoDF的长度{}".format(len(aStockInfoDF)))
-        aStockInfoDF.to_csv("input/aStockInfoDF" + lastYearDate + ".csv")
-
-    # 读取数据
-    aStockInfoDF = pd.read_csv("input/aStockInfoDF" + lastYearDate + ".csv")
-    aStockInfoDF.drop('Unnamed: 0', axis=1, inplace=True)
+    aStockInfoDF = GetstockstyleData(lastYearDate, apikey)
 
     missing_values_count = aStockInfoDF.isnull().sum(axis=1)
     rows_with_missing = missing_values_count[missing_values_count > 0]
-    print("{}存在缺失值的行数为：{}".format(lastYearDate,len(rows_with_missing)))
+    print("{}存在缺失值的行数为：{}".format(lastYearDate, len(rows_with_missing)))
     # 用行业均值替换缺失值
     aStockInfoDF['ths_the_citic_industry_stock'] = aStockInfoDF['ths_the_citic_industry_stock'].fillna('其他')
     means = aStockInfoDF.iloc[:, 1::].groupby('ths_the_citic_industry_stock').mean()
@@ -77,12 +80,8 @@ def StyleShort(lastYearDate, apikey):
     StockInfoDF.loc[:199, 'Flag'] = 'Big'
     StockInfoDF.loc[200:499, 'Flag'] = 'Mid'
 
-    # 找出大中小盘的门限值
-    # print("大盘的股票数量为：{}".format(len(StockInfoDF[StockInfoDF['Flag'] == 'Big'])))
-    # print("中盘的股票数量为：{}".format(len(StockInfoDF[StockInfoDF['Flag'] == 'Mid'])))
-    # print("小盘的股票数量为：{}".format(len(StockInfoDF[StockInfoDF['Flag'] == 'Small'])))
-    StockInfoDF['LMT'] = StockInfoDF.loc[199,'ths_market_value_stock']
-    StockInfoDF['MST'] = StockInfoDF.loc[499,'ths_market_value_stock']
+    StockInfoDF['LMT'] = StockInfoDF.loc[199, 'ths_market_value_stock']
+    StockInfoDF['MST'] = StockInfoDF.loc[499, 'ths_market_value_stock']
 
     # 计算价值得分
     StockInfoDF['BP'] = 1 / StockInfoDF['ths_pb_latest_stock']
@@ -93,8 +92,8 @@ def StyleShort(lastYearDate, apikey):
     StockInfoDF['EPTTM1'] = StockInfoDF.groupby('Flag')['EPTTM'].rank(method='first')
     StockInfoDF['SPTTM1'] = StockInfoDF.groupby('Flag')['SPTTM'].rank(method='first')
     weightOVS = [0.5, 0.25, 0.25]
-    StockInfoDF['OVS'] = StockInfoDF['BP1'] * weightOVS[0] + StockInfoDF['EPTTM1'] * weightOVS[1] + StockInfoDF['SPTTM1'] * \
-                         weightOVS[2]
+    StockInfoDF['OVS'] = StockInfoDF['BP1'] * weightOVS[0] + StockInfoDF['EPTTM1'] * weightOVS[1] + StockInfoDF[
+        'SPTTM1'] * weightOVS[2]
 
     # 计算成长得分
     StockInfoDF['NETPROFITINCYOY'] = StockInfoDF['ths_sq_np_yoy_stock'] * 0.01
@@ -139,23 +138,8 @@ def StyleShort(lastYearDate, apikey):
             np.log(StockInfoDF['LMT']) - np.log(StockInfoDF['MST'])))
 
     # 对我的基金池进行风格主题分类
-    MyFundDF = pd.read_csv("output/MyFundDF.csv")
-    MyFundDF.drop('Unnamed: 0', axis=1, inplace=True)
-    MyFundList = MyFundDF.iloc[:, [0]].values.tolist()
-    MyFundList = [item for sublist in MyFundList for item in sublist]
-    # print("基金总数为：{}".format(len(MyFundList)))
-    MyFundChar = ','.join(MyFundList)
-
-    try:
-        FundRatioDF = pd.read_csv("input/FundRatioDF" + lastYearDate + ".csv")
-        FundRatioDF.drop('Unnamed: 0', axis=1, inplace=True)
-    except FileNotFoundError:
-        print("本地文件不存在，尝试从接口获取数据...")
-        # 获取全部基金持仓数据
-        FundRatioDF = THS_DR('p00475', 'bgqlb=' + lastYearDate + ';jjlb=' + MyFundChar + ';tzlx=0',
-                             'jydm:Y,jydm_mc:Y,p00475_f001:Y,p00475_f002:Y,p00475_f009:Y', 'format:dataframe').data
-        FundRatioDF.to_csv("input/FundRatioDF" + lastYearDate + ".csv")
-
+    fundcode4list = getstockfundcode()
+    FundRatioDF = GetsfundastockData(fundcode4list, lastYearDate, apikey)  # 获取基金权益明细的数据
     FundRatioDF.rename(columns={'p00475_f002': 'thscode', 'p00475_f009': 'ratio'}, inplace=True)
     FundRatioDF['ratio_num'] = pd.to_numeric(FundRatioDF['ratio'], errors='coerce')
     FundRatioDF['ratio_num'] = FundRatioDF['ratio_num'] / 100
@@ -178,13 +162,69 @@ def StyleShort(lastYearDate, apikey):
     one_fifth = len(result) // 5
     result['Xstyle'] = '均衡型'
     result.iloc[:one_fifth, result.columns.get_loc('Xstyle')] = '成长型'
-    result.iloc[one_fifth:(2*one_fifth), result.columns.get_loc('Xstyle')] = '成长-均衡型'
-    result.iloc[(one_fifth*3):(4*one_fifth), result.columns.get_loc('Xstyle')] = '均衡-价值型'
+    result.iloc[one_fifth:(2 * one_fifth), result.columns.get_loc('Xstyle')] = '成长-均衡型'
+    result.iloc[(one_fifth * 3):(4 * one_fifth), result.columns.get_loc('Xstyle')] = '均衡-价值型'
     result.iloc[-one_fifth:, result.columns.get_loc('Xstyle')] = '价值型'
 
     result['Ystyle'] = result.apply(style_divide2, axis=1)
-    # result.to_csv("output/style" + lastYearDate + ".csv")
-    print('{}风格标签成功匹配的基金比例为：{}/{}'.format(lastYearDate, len(result), len(MyFundList)))
+    print('{}风格标签成功匹配的基金比例为：{}/{}'.format(lastYearDate, len(result), len(fundcode4list)))
     result.reset_index(drop=False, inplace=True)
     result.rename(columns={'jydm': 'thscode'}, inplace=True)
-    return result[['thscode', 'Xstyle','Ystyle']]
+    return result[['thscode', 'Xstyle', 'Ystyle']]
+
+
+def getindependent(lastQuarDate, apikey):
+    """
+    :param lastQuarDate: 季报
+    :param apikey:
+    :return: df
+    """
+    fundcode4list = getstockfundcode()
+    HDF = Getsfund10stockData(fundcode4list, lastQuarDate, apikey)
+
+    # HDF = HDF.dropna()
+    ww_cols = ['ww' + str(i + 1) for i in range(10)]
+    HDF['wwsum'] = HDF[ww_cols].sum(axis=1)
+    for i in range(10):
+        HDF['w' + str(i + 1)] = HDF['ww' + str(i + 1)] / HDF['wwsum']
+        HDF.drop('ww' + str(i + 1), axis=1, inplace=True)
+        HDF.reset_index()
+
+    HDF['H'] = HDF['x1'] * HDF['w1'] + HDF['x2'] * HDF['w2'] + HDF['x3'] * HDF['w3'] + HDF['x4'] * HDF['w4'] + HDF[
+        'x5'] * HDF['w5'] + HDF['x6'] * HDF['w6'] + HDF['x7'] * HDF['w7'] + HDF['x8'] * HDF['w8'] + HDF['x9'] * HDF[
+        'w9'] + HDF['x10'] * HDF['w10']
+    # HDF['H'] = HDF[x_cols].mul(HDF[w_cols]).sum(axis=1)
+
+    HDF = HDF.sort_values(by='H', ascending=False)
+    afundnum = len(HDF)
+    num_resonance = int(afundnum / 3)  # 共振基金数量
+    num_independent = num_resonance  # 独立基金数量
+    num_neutral = afundnum - num_resonance - num_independent  # 中立基金数量
+    # 将DataFrame分成不同的部分
+    resonance_funds = HDF.iloc[:num_resonance]
+    neutral_funds = HDF.iloc[num_resonance:(num_resonance + num_neutral)]
+    independent_funds = HDF.iloc[(num_resonance + num_neutral):]
+    # 为每个部分分配相应的标签
+    resonance_funds['HCategory'] = '共振基金'
+    neutral_funds['HCategory'] = '中立基金'
+    independent_funds['HCategory'] = '独立基金'
+    # 合并三个部分
+    result = pd.concat([resonance_funds, neutral_funds, independent_funds])
+    return result[['thscode', 'HCategory']]
+
+
+def getCR(lastQuarDate, apikey):
+    """
+    :param lastQuarDate: 季报
+    :param apikey: list，["tfzq1556", "752862"]
+    :return: df
+    """
+    fundcode4list = getstockfundcode()
+    CR4df = Getsfund10sumstockData(fundcode4list, lastQuarDate, apikey)
+    CR4df = CR4df.sort_values(by='ths_top_n_top_stock_mv_to_si_mv_fund', ascending=False)
+    one_third = len(CR4df) // 3
+    CR4df['cr'] = '中'
+    CR4df.iloc[:one_third, CR4df.columns.get_loc('cr')] = '高'
+    CR4df.iloc[-one_third:, CR4df.columns.get_loc('cr')] = '低'
+    return CR4df[['thscode', 'cr']]
+

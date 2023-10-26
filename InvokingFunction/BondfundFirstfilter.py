@@ -12,7 +12,7 @@ import pandas as pd
 import warnings
 
 from InvokingFunction.GetData import GetbfundbasicData
-from InvokingFunction.GetFunction import exchangedate1, getQtime4liet
+from InvokingFunction.GetGFunction import exchangedate1, getQtime4liet
 
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 

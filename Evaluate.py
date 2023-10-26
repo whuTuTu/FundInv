@@ -11,8 +11,8 @@
 import pandas as pd
 from iFinDPy import *  # 同花顺API接口
 from InvokingFunction.GetData import GetbfundnetvalueData, GetindexcloseData
-from InvokingFunction.GetFunction import exchangedate1, getQtime4liet, getHYtime4list, getchunzhaicode
-from InvokingFunction.GetQuantitativeIndex import calculate_one_cum_return, calculate_excess_returns, \
+from InvokingFunction.GetGFunction import exchangedate1, getQtime4liet, getHYtime4list, getchunzhaicode
+from InvokingFunction.GetQuantitativeIndex import calculate_one_cum_return, \
     calculate_excess_sharpe_ratio, calculate_excess_max_drawdown, calculate_excess_win_rate, \
     calculate_excess_one_cum_return, calculate_max_drawdown, calculate_win_rate, calculate_excess_odds_ratio, \
     calculate_odds_ratio

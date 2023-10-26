@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
 @Project ：FundInv
-@File    ：GetFunction.py
+@File    ：GetGFunction.py
 @IDE     ：PyCharm
 @Author  ：tutu
 @Date    ：2023-09-15 14:46
@@ -24,7 +24,7 @@ def exchangedate1(YearDate):
 
 def df2list(df1):
     """
-    将pd的第一列df.iloc[:,0]变成list
+    将pd的第一列df.iloc[:,[0]]变成list
     :param df1:
     :return: list
     """
@@ -34,12 +34,21 @@ def df2list(df1):
 
 def getchunzhaicode():
     """
-    读文件获取筛选后的基金代码，输出list
+    【纯债基金代码】读文件获取筛选后的基金代码，输出list
     :return:list
     """
     cunzhai4df = pd.read_csv("output/ChunzhaiFund/chunzhai_filter.csv")
     cunzhai4df.drop('Unnamed: 0', axis=1, inplace=True)
     return df2list(cunzhai4df.iloc[:, [0]])
+
+def getstockfundcode():
+    """
+    【股票基金代码】读文件获取筛选后的基金代码，输出list
+    :return:list
+    """
+    MyFundDF = pd.read_csv("output/StockFund/stockfund_filter.csv")
+    MyFundDF.drop('Unnamed: 0', axis=1, inplace=True)
+    return df2list(MyFundDF.iloc[:, [0]])
 
 def getHYtime4list(beginDate, lastYearDate):
     """

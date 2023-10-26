@@ -4,16 +4,91 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39b7fa66-eccc-4d88-83b3-376dfec96a73" name="变更" comment="变更" />
+    <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/FundInv.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConcentrationRatio.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FundSum.py" beforeDir="false" afterPath="$PROJECT_DIR$/FundSum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IndShort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IndependentFund.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/BondfundFirstfilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/BondfundFirstfilter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetGFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SUNTIME.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemporaryFile/SUNTIME.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StyleShort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstfilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/StockfundFirstfilter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20181231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20181231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20190630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20190630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20191231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20191231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20200630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20200630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20201231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20201231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20210630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20210630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20211231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20220630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20221231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/HDF20220630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/HDF20220930.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/HDF20221231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/HDF20230331.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/HDF20230630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20210630-20210930.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210630-20210930.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20210630-20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210630-20211231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20210930-20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210930-20211231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20211231-20220331.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20211231-20220331.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20211231-20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20211231-20220630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20220331-20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220331-20220630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20220630-20220930.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220630-20220930.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20220630-20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220630-20221231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20220630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20220930-20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220930-20221231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20220930.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20221231-20230331.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230331.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20221231-20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20221231-20230825.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230825.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20221231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20230331-20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20230331-20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20230331.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/NetValue20230630-20230922.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20230630-20230922.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/ScaleDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Scale/Qscale20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockRatioDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Stockratio/Allratio20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20180630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20180630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20181231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20181231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20190630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20190630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20191231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20191231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20200630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20200630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20201231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20201231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20210630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20210630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20211231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20220630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20221231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20181231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20181231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20190630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20190630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20191231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20191231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20200630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20200630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20201231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20201231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20210630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20210630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20211231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20220630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20220930.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20220930.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20221231.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20230630.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/MyFundDF.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/stockfund_filter.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ChangesViewManager">
-    <option name="groupingKeys">
-      <option value="directory" />
-    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,60 +106,53 @@
     &quot;assignee&quot;: &quot;whuTuTu&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="129754d9-009e-470e-88cf-0619d4d0ddf4" />
-  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="129754d9-009e-470e-88cf-0619d4d0ddf4" />
+        <option name="accountId" value="50012f4d-4f8a-47f5-8fad-7d1d706b7a36" />
         <option name="url" value="https://github.com/whuTuTu/FundInv.git" />
       </UrlAndAccount>
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Evaluate.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/IndependentFund.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2TdPrkNKNhS02ig4HrXTjiBt42Z" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2X7EClU3bltb4Ko53vlGXZXKh3I" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "D:/code/tf_securiity/FundInv",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CodeTF/FundInv&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;two.files.diff.last.used.folder&quot;: &quot;D:/TFCode/FundInv/output/【公募基金】2023中报（20231011）.zip&quot;
   }
-}]]></component>
-  <component name="PyDebuggerOptionsProvider">
-    <option name="mySupportGeventDebugging" value="true" />
-    <option name="myDropIntoDebuggerOnFailedTests" value="true" />
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\TFCode\FundInv\input\StockFundData\NetValue" />
+      <recent name="D:\TFCode\FundInv\input\StockFundData" />
+      <recent name="D:\TFCode\FundInv\TemporaryFile" />
+      <recent name="D:\TFCode\FundInv" />
+      <recent name="D:\TFCode\FundInv\input\StockData\Style" />
+    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="configurationTypes">
-      <set>
-        <option value="PythonConfigurationType" />
-      </set>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.getdata">
+  <component name="RunManager" selected="Python.FundSum">
     <configuration name="Evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,7 +195,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="getdata" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="GetShortstockfundLabel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -135,11 +203,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/InvokingFunction" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getdata.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,49 +216,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="FundInv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/index.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="FundInv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -211,82 +237,55 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FundInv" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/invoking function" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/invoking function/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.getdata" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.Evaluate" />
         <item itemvalue="Python.FundSum" />
-        <item itemvalue="Python.index" />
+        <item itemvalue="Python.GetShortstockfundLabel" />
+        <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.Evaluate" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="39b7fa66-eccc-4d88-83b3-376dfec96a73" name="变更" comment="" />
-      <created>1691370184879</created>
+      <changelist id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="" />
+      <created>1697971592591</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1691370184879</updated>
+      <updated>1697971592591</updated>
     </task>
-    <task id="LOCAL-00001" summary="变更">
+    <task id="LOCAL-00001" summary="债券基金代码更新">
       <option name="closed" value="true" />
-      <created>1697598174111</created>
+      <created>1698198969488</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1697598174111</updated>
+      <updated>1698198969488</updated>
     </task>
-    <task id="LOCAL-00002" summary="变更">
-      <option name="closed" value="true" />
-      <created>1697598182254</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1697598182254</updated>
-    </task>
-    <task id="LOCAL-00003" summary="变更">
-      <option name="closed" value="true" />
-      <created>1697598217912</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1697598217912</updated>
-    </task>
-    <task id="LOCAL-00004" summary="变更">
-      <option name="closed" value="true" />
-      <created>1697790020143</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1697790020143</updated>
-    </task>
-    <task id="LOCAL-00005" summary="变更">
-      <option name="closed" value="true" />
-      <created>1697790175622</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1697790175622</updated>
-    </task>
-    <task id="LOCAL-00006" summary="变更">
-      <option name="closed" value="true" />
-      <created>1697790727280</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1697790727280</updated>
-    </task>
-    <task id="LOCAL-00007" summary="变更">
-      <option name="closed" value="true" />
-      <created>1697969875818</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1697969875818</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,18 +300,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="变更" />
-    <option name="LAST_COMMIT_MESSAGE" value="变更" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="债券基金代码更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="债券基金代码更新" />
   </component>
 </project>

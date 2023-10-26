@@ -14,7 +14,7 @@ import warnings
 import os
 from InvokingFunction.GetData import GetbfundcompanyData, GetbfunddurationData, GetbfundleverData, GetbfundbondData, \
     GetbondTHScode, GetbondType
-from InvokingFunction.GetFunction import getchunzhaicode, df2list
+from InvokingFunction.GetGFunction import getchunzhaicode, df2list
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 # 更改相对路径
 path = "D:\TFCode\FundInv"

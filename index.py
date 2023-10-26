@@ -16,7 +16,7 @@ import plotly.offline as py_offline
 import matplotlib.pyplot as plt
 
 from StyleShort import StyleShort
-from firstfilter import FirstFilter
+from InvokingFunction.StockfundFirstfilter import StockFirstFilter
 from InvokingFunction.Short2Long import Getstockfund4Long
 from IndependentFund import getIndependent
 import warnings
@@ -70,7 +70,7 @@ print(len(YearDate))
 # ------------------------------------------以下为代码--------------------------------------------------------
 # 共振因子
 if Hflag:
-    myfund = FirstFilter(endDate, apikey)
+    myfund = StockFirstFilter(endDate, apikey)
     len_time = len(QuanDate) - 1
     for i in range(len_time):
         print("---------------------{}------------------------".format(QuanDate[i]))
@@ -142,7 +142,7 @@ if Hflag:
 
 # 行业
 if ind_flag:
-    myfund = FirstFilter(endDate, apikey)
+    myfund = StockFirstFilter(endDate, apikey)
     len_time = len(YearDate) - 1
     for i in range(len_time):
         print("---------------------{}------------------------".format(YearDate[i]))
@@ -215,7 +215,7 @@ if ind_flag:
     py_offline.plot(fig, filename='output/ind.html')
 
 if style_flag:
-    myfund = FirstFilter(endDate, apikey)
+    myfund = StockFirstFilter(endDate, apikey)
     len_time = len(YearDate) - 1
     for i in range(len_time):
         print("------------------------{0}------------------------".format(YearDate[i]))
