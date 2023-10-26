@@ -5,85 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/FundInv.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConcentrationRatio.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FundSum.py" beforeDir="false" afterPath="$PROJECT_DIR$/FundSum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IndShort.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IndependentFund.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/BondfundFirstfilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/BondfundFirstfilter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetGFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SUNTIME.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemporaryFile/SUNTIME.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StyleShort.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/firstfilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/StockfundFirstfilter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20181231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20181231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20190630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20190630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20191231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20191231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20200630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20200630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20201231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20201231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20210630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20210630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20211231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20220630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20221231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/FundRatioDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/HDF20220630.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/HDF20220930.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/HDF20221231.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/HDF20230331.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/HDF20230630.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20210630-20210930.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210630-20210930.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20210630-20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210630-20211231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20210930-20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210930-20211231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20211231-20220331.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20211231-20220331.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20211231-20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20211231-20220630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20220331-20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220331-20220630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20220630-20220930.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220630-20220930.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20220630-20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220630-20221231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20220630.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20220930-20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220930-20221231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20220930.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20221231-20230331.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230331.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20221231-20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20221231-20230825.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230825.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20221231.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20230331-20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20230331-20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20230331.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/NetValue20230630-20230922.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20230630-20230922.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/ScaleDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Scale/Qscale20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/StockRatioDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockFundData/Stockratio/Allratio20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20180630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20180630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20181231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20181231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20190630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20190630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20191231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20191231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20200630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20200630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20201231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20201231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20210630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20210630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20211231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20220630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20221231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockIndDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Industry/HYindustry20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20181231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20181231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20190630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20190630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20191231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20191231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20200630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20200630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20201231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20201231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20210630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20210630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20211231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20211231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20220630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20220630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20220930.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20220930.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20221231.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20221231.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/aStockInfoDF20230630.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/StockData/Style/HYstyle20230630.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/MyFundDF.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/stockfund_filter.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemporaryFile/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,9 +25,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;whuTuTu&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
@@ -145,9 +73,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\TFCode\FundInv\TemporaryFile" />
       <recent name="D:\TFCode\FundInv\input\StockFundData\NetValue" />
       <recent name="D:\TFCode\FundInv\input\StockFundData" />
-      <recent name="D:\TFCode\FundInv\TemporaryFile" />
       <recent name="D:\TFCode\FundInv" />
       <recent name="D:\TFCode\FundInv\input\StockData\Style" />
     </key>
@@ -285,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698198969488</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="股票基金代码更新">
+      <option name="closed" value="true" />
+      <created>1698305781834</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698305781834</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,6 +237,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="债券基金代码更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="债券基金代码更新" />
+    <MESSAGE value="股票基金代码更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="股票基金代码更新" />
   </component>
 </project>

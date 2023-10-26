@@ -15,10 +15,8 @@ import plotly.graph_objects as go
 import plotly.offline as py_offline
 import matplotlib.pyplot as plt
 
-from StyleShort import StyleShort
 from InvokingFunction.StockfundFirstfilter import StockFirstFilter
 from InvokingFunction.Short2Long import Getstockfund4Long
-from IndependentFund import getIndependent
 import warnings
 warnings.filterwarnings(action='ignore')
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
