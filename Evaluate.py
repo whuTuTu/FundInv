@@ -75,9 +75,9 @@ oddsrate3Y4list = [] # 近三年赔率
 
 excesscumreturn3Y4list = []  # 近三年超额累计收益
 excesssharpe3Y4list = []  # 近三年超额夏普比例
-excessmaxdrawdown3Y4list = [] # 近三年超额最大回撤
-excesswinrate3Y4list = [] # 近三年超额胜率
-excessoddsrate3Y4list = [] # 近三年超额赔率
+excessmaxdrawdown3Y4list = []  # 近三年超额最大回撤
+excesswinrate3Y4list = []  # 近三年超额胜率
+excessoddsrate3Y4list = []  # 近三年超额赔率
 
 for onecode in partfundcode4list:
     onenetvalue4list = NetValueDF.loc[exchangedate1(start_date):exchangedate1(end_date), onecode].values.tolist()
@@ -97,6 +97,7 @@ for onecode in partfundcode4list:
     excessoddsrate3Y4list.append(calculate_excess_odds_ratio(onenetvalue4list, chunzhai_index4list))
 
 data = {
+    'thscode': partfundcode4list,
     '近三年累计收益': cumreturn3Y4list,
     '近三年最大回撤': maxdrawdown3Y4list,
     '近三年胜率': winrate3Y4list,
@@ -109,16 +110,20 @@ data = {
     }
 quantitative4df = pd.DataFrame(data)
 # 排序求均值
-quantitative4df['近三年累计收益排名'] = quantitative4df['近三年累计收益'].rank(method='first') # 升序排列，数值较小的获得较低的排名
-quantitative4df['近三年最大回撤'] = quantitative4df['近三年最大回撤'].rank(method='first')
-quantitative4df['近三年胜率'] = quantitative4df['近三年胜率'].rank(method='first')
-quantitative4df['近三年赔率'] = quantitative4df['近三年赔率'].rank(method='first')
-quantitative4df['近三年超额累计收益'] = quantitative4df['近三年超额累计收益'].rank(method='first')
-quantitative4df['近三年超额夏普比例'] = quantitative4df['近三年超额夏普比例'].rank(method='first')
-quantitative4df['近三年超额最大回撤'] = quantitative4df['近三年超额最大回撤'].rank(method='first')
-quantitative4df['近三年超额胜率'] = quantitative4df['近三年超额胜率'].rank(method='first')
+quantitative4df['近三年累计收益排名'] = quantitative4df['近三年累计收益'].rank(method='first')  # 升序排列，数值较小的获得较低的排名
+quantitative4df['近三年最大回撤排名'] = quantitative4df['近三年最大回撤'].rank(method='first')
+quantitative4df['近三年胜率排名'] = quantitative4df['近三年胜率'].rank(method='first')
+quantitative4df['近三年赔率排名'] = quantitative4df['近三年赔率'].rank(method='first')
+quantitative4df['近三年超额累计收益排名'] = quantitative4df['近三年超额累计收益'].rank(method='first')
+quantitative4df['近三年超额夏普比例排名'] = quantitative4df['近三年超额夏普比例'].rank(method='first')
+quantitative4df['近三年超额最大回撤排名'] = quantitative4df['近三年超额最大回撤'].rank(method='first')
+quantitative4df['近三年超额胜率排名'] = quantitative4df['近三年超额胜率'].rank(method='first')
 quantitative4df['近三年超额赔率排名'] = quantitative4df['近三年超额赔率'].rank(method='first')
 quantitative4df = quantitative4df.dropna()
 quantitative4df['总排名'] = quantitative4df.iloc[:, 9:-1].mean(axis=1)
+
+chunzhailable4df = pd.read_csv("output/ChunzhaiFund/chunzhai_label.csv")
+chunzhailable4df.drop('Unnamed: 0', axis=1, inplace=True)
+quantitative4df = pd.merge(quantitative4df.iloc[:, list(range(0, 9)) + [-1]], chunzhailable4df, on='thscode', how='left')
 quantitative4df = quantitative4df.sort_values(by='总排名', ascending=False)
-quantitative4df.iloc[:, list(range(0, 9)) + [-1]].to_csv("output/ChunzhaiFund/quantitative.csv")
+quantitative4df.to_csv("output/ChunzhaiFund/quantitative.csv")

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +80,7 @@
       <recent name="D:\TFCode\FundInv\input\StockData\Style" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.FundSum">
+  <component name="RunManager" selected="Python.Evaluate">
     <configuration name="Evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,10 +188,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Evaluate" />
         <item itemvalue="Python.FundSum" />
         <item itemvalue="Python.GetShortstockfundLabel" />
         <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.Evaluate" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -227,7 +229,31 @@
       <option name="project" value="LOCAL" />
       <updated>1698308649206</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="删去多余的文件">
+      <option name="closed" value="true" />
+      <created>1698309651793</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698309651793</updated>
+    </task>
+    <task id="LOCAL-00005" summary="变更">
+      <option name="closed" value="true" />
+      <created>1698309770937</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698309770937</updated>
+    </task>
+    <task id="LOCAL-00006" summary="变更">
+      <option name="closed" value="true" />
+      <created>1698309817906</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698309817906</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,6 +272,7 @@
     <MESSAGE value="债券基金代码更新" />
     <MESSAGE value="股票基金代码更新" />
     <MESSAGE value="删去多余的文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="删去多余的文件" />
+    <MESSAGE value="变更" />
+    <option name="LAST_COMMIT_MESSAGE" value="变更" />
   </component>
 </project>
