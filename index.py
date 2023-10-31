@@ -43,22 +43,21 @@ types_flag = True
 # ------------------------------------------生成相关时间变量--------------------------------------------------------
 beginDate = "20221231"  # 开始时间
 QuanDate = getQtime4liet(beginDate, lastQuarDate)
-YearDate = getHYtime4list(beginDate, lastYearDate)
+HYearDate = getHYtime4list(beginDate, lastYearDate)
 QuanDate.append(endDate)
-YearDate.append(endDate)
+HYearDate.append(endDate)
 # ------------------------------------------以下为代码-------------------------------------------------------------
 if ind_flag:
     fundcode4list = getstockfundcode()  # 获取股票基金代码
-    len_time = len(YearDate) - 1
+    len_time = len(HYearDate) - 1
     for i in range(len_time):
-        print("------------------------{0}------------------------".format(YearDate[i]))
-        MyFundDF = getindustry(YearDate[i], apikey)
-        NetValue = GetsfundnetvalueData(fundcode4list, YearDate[i], YearDate[i+1], apikey)  # 获取半年的净值数据
+        print("------------------------{0}------------------------".format(HYearDate[i]))
+        MyFundDF = getindustry(HYearDate[i], apikey)
+        NetValue = GetsfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
         NetValue.set_index('time', inplace=True)
 
         # 分类基金
         types = ['周期行业基金', '医药行业基金', '制造行业基金', '金融地产行业基金', 'TMT行业基金', '消费行业基金', '其他行业基金', '行业均衡基金']
-        print(types)
         for j in range(len(types)):
             fund0 = MyFundDF[MyFundDF['INDtype'] == types[j]].iloc[:, [0]].values.tolist()
             fund0 = [item for sublist in fund0 for item in sublist]
@@ -93,13 +92,13 @@ if ind_flag:
 
 if style_flag:
     fundcode4list = getstockfundcode()  # 获取股票基金代码
-    len_time = len(YearDate) - 1
+    len_time = len(HYearDate) - 1
     for i in range(len_time):
-        print("------------------------{0}------------------------".format(YearDate[i]))
-        indlong4df = Getstockfund4Long(YearDate[i], lastQuarDate, apikey, flag=1)
-        styleshort4df = getstyle(YearDate[i], apikey)
+        print("------------------------{0}------------------------".format(HYearDate[i]))
+        indlong4df = Getstockfund4Long(HYearDate[i], lastQuarDate, apikey, flag=1)
+        styleshort4df = getstyle(HYearDate[i], apikey)
         MyFundDF = pd.merge(indlong4df, styleshort4df, on='thscode', how='left')  # 合并数据
-        NetValue = GetsfundnetvalueData(fundcode4list, YearDate[i], YearDate[i+1], apikey)  # 获取半年的净值数据
+        NetValue = GetsfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
         NetValue.set_index('time', inplace=True)
 
         # 分类基金
@@ -140,11 +139,11 @@ if style_flag:
 if types_flag:
     fundcode4list = getchunzhaicode()  # 获取股票基金代码
     print(len(fundcode4list))
-    len_time = len(YearDate) - 1
+    len_time = len(HYearDate) - 1
     for i in range(len_time):
-        print("------------------------{0}------------------------".format(YearDate[i]))
-        MyFundDF = getbondtype(YearDate[i], apikey)
-        NetValue = GetbfundnetvalueData(fundcode4list, YearDate[i], YearDate[i+1], apikey)  # 获取半年的净值数据
+        print("------------------------{0}------------------------".format(HYearDate[i]))
+        MyFundDF = getbondtype(HYearDate[i], apikey)
+        NetValue = GetbfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
         NetValue.set_index('time', inplace=True)
         print(MyFundDF.shape)
 

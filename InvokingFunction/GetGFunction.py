@@ -68,6 +68,25 @@ def getHYtime4list(beginDate, lastYearDate):
         else:
             continue
     return repDateY
+def getYtime4list(beginDate, lastYearDate):
+    """
+    获取半年度频率时间节点
+    :param beginDate:
+    :param lastYearDate:
+    :return:
+    """
+    beginyear = beginDate[0:4]
+    endyear = lastYearDate[0:4]
+    monthday = '1231'
+    aRepDate = [str(i) + j for i in range(int(beginyear), int(endyear) + 1) for j in monthday]
+    repDateY = []
+    for i in aRepDate:
+        if lastYearDate >= i >= beginDate:
+            repDateY.append(i)
+        else:
+            continue
+    return repDateY
+
 def getQtime4liet(beginDate, lastQuarDate):
     """
     获取季度频率时间节点

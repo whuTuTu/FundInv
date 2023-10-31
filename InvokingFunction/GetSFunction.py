@@ -15,8 +15,9 @@ import plotly.graph_objects as go
 import plotly.offline as py_offline
 import matplotlib.pyplot as plt
 
+from InvokingFunction.GetGFunction import exchangedate1, df2list
 from InvokingFunction.GetQuantitativeIndex import calculate_one_cum_return, calculate_max_drawdown, \
-    calculate_sharpe_ratio
+    calculate_sharpe_ratio, calculate_win_rate, calculate_odds_ratio
 
 
 # 小于临界值且最接近临界值
@@ -169,3 +170,90 @@ def returndf2fig(ReturnDF):
     fig = go.Figure(data=plot_data, layout=layout)
     return fig
 
+def gettopnlist(n1,n2,partfundcode4list,NetValueDF,endDate,num_pen,choice='gg'):
+    """
+
+    :param n1:
+    :param n2:
+    :param partfundcode4list:
+    :param NetValueDF:
+    :param endDate:
+    :param num_pen:
+    :param choice: gg,gb
+    :return:
+    """
+
+    # 近三年指标
+    start_date5Y = str(int(endDate[0:4]) - n1) + endDate[4::]  # 时间往前推5年
+    start_date1Y = str(int(endDate[0:4]) - n2) + endDate[4::]  # 时间往前推1年
+
+    end_date = endDate
+    cumreturn5Y4list = []  # 近5年累计收益
+    maxdrawdown5Y4list = []  # 近5年最大回撤
+    shaperatio5Y4list = []  # 近5年夏普比例
+    winrate5Y4list = []  # 近5年胜率
+    oddsrate5Y4list = []  # 近5年赔率
+
+    cumreturn1Y4list = []  # 近1年累计收益
+    maxdrawdown1Y4list = []  # 近1年最大回撤
+    shaperatio1Y4list = []  # 近1年夏普比例
+    winrate1Y4list = []  # 近1年胜率
+    oddsrate1Y4list = []  # 近1年赔率
+
+    for onecode in partfundcode4list:
+        onenetvalue4list1 = NetValueDF.loc[exchangedate1(start_date5Y):exchangedate1(end_date), onecode].values.tolist()
+        onenetvalue4list2 = NetValueDF.loc[exchangedate1(start_date1Y):exchangedate1(end_date), onecode].values.tolist()
+
+        # 近5年指标
+        cumreturn5Y4list.append(calculate_one_cum_return(onenetvalue4list1))
+        maxdrawdown5Y4list.append(calculate_max_drawdown(onenetvalue4list1))
+        shaperatio5Y4list.append(calculate_sharpe_ratio(onenetvalue4list1))
+        winrate5Y4list.append(calculate_win_rate(onenetvalue4list1))
+        oddsrate5Y4list.append(calculate_odds_ratio(onenetvalue4list1))
+
+        # 近1年指标
+        cumreturn1Y4list.append(calculate_one_cum_return(onenetvalue4list2))
+        maxdrawdown1Y4list.append(calculate_max_drawdown(onenetvalue4list2))
+        shaperatio1Y4list.append(calculate_sharpe_ratio(onenetvalue4list2))
+        winrate1Y4list.append(calculate_win_rate(onenetvalue4list2))
+        oddsrate1Y4list.append(calculate_odds_ratio(onenetvalue4list2))
+
+    data = {
+        '基金代码': partfundcode4list,
+        '近n1年累计收益': cumreturn5Y4list,
+        '近n1年最大回撤': maxdrawdown5Y4list,
+        '近n1年夏普比例': shaperatio5Y4list,
+        '近n1年胜率': winrate5Y4list,
+        '近n1年赔率': oddsrate5Y4list,
+
+        '近n2年累计收益': cumreturn1Y4list,
+        '近n2年最大回撤': maxdrawdown1Y4list,
+        '近n2年夏普比例': shaperatio1Y4list,
+        '近n2年胜率': winrate1Y4list,
+        '近n2年赔率': oddsrate1Y4list
+        }
+    quantitative4df = pd.DataFrame(data)
+    # 排序求均值
+    quantitative4df['近n1年累计收益排名'] = quantitative4df['近n1年累计收益'].rank(method='first')  # 升序排列，数值较小的获得较低的排名
+    quantitative4df['近n1年最大回撤排名'] = quantitative4df['近n1年最大回撤'].rank(method='first')
+    quantitative4df['近n1年夏普比例排名'] = quantitative4df['近n1年夏普比例'].rank(method='first')
+    quantitative4df['近n1年夏普比例排名'] = quantitative4df['近n1年夏普比例'].rank(method='first')
+    quantitative4df['近n1年赔率排名'] = quantitative4df['近n1年赔率'].rank(method='first')
+
+    if choice == 'gb':
+        quantitative4df['近n2年累计收益排名'] = quantitative4df['近n2年累计收益'].rank(method='first', ascending=False)
+        quantitative4df['近n2年最大回撤排名'] = quantitative4df['近n2年最大回撤'].rank(method='first', ascending=False)
+        quantitative4df['近n2年夏普比例排名'] = quantitative4df['近n2年夏普比例'].rank(method='first', ascending=False)
+        quantitative4df['近n2年胜率排名'] = quantitative4df['近n2年胜率'].rank(method='first', ascending=False)
+        quantitative4df['近n2年赔率排名'] = quantitative4df['近n2年赔率'].rank(method='first', ascending=False)
+    else:
+        quantitative4df['近n2年累计收益排名'] = quantitative4df['近n2年累计收益'].rank(method='first')
+        quantitative4df['近n2年最大回撤排名'] = quantitative4df['近n2年最大回撤'].rank(method='first')
+        quantitative4df['近n2年夏普比例排名'] = quantitative4df['近n2年夏普比例'].rank(method='first')
+        quantitative4df['近n2年胜率排名'] = quantitative4df['近n2年胜率'].rank(method='first')
+        quantitative4df['近n2年赔率排名'] = quantitative4df['近n2年赔率'].rank(method='first')
+    quantitative4df = quantitative4df.dropna()
+    quantitative4df['总排名'] = quantitative4df.iloc[:, 10:-1].mean(axis=1)
+    quantitative4df = quantitative4df.sort_values(by='总排名', ascending=False)  # 降序排列
+    fund4list = df2list(quantitative4df.iloc[:, [0]])[0:int(len(quantitative4df) * num_pen)]
+    return fund4list
