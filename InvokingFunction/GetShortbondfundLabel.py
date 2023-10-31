@@ -89,10 +89,10 @@ def getbondtype(endDate, apikey):
     cunzhaiFundRatioDF.rename(columns={'p00483_f002': 'thscode', 'p00483_f008': 'ratio'}, inplace=True)
     cunzhaiFundRatioDF['ratio_num'] = pd.to_numeric(cunzhaiFundRatioDF['ratio'], errors='coerce')
     bond4list = cunzhaiFundRatioDF['thscode'].dropna().unique().tolist()
-    bondcode4df = GetbondTHScode(bond4list) # THS债券代码转换为有后缀
+    bondcode4df = GetbondTHScode(bond4list)  # THS债券代码转换为有后缀
     bondcode4df['first_code'] = bondcode4df['thscode'].str.split(',').str[0]
     bondcode4list = df2list(bondcode4df.iloc[:, [2]])
-    bond4df = GetbondType(bondcode4list,endDate, apikey)  # 获取债券对应的分类数据
+    bond4df = GetbondType(bondcode4list, endDate, apikey)  # 获取债券对应的分类数据
 
     # 合并
     cunzhaiFundRatioDF.rename(columns={'thscode': 'seccode'}, inplace=True)
@@ -112,6 +112,7 @@ def getbondtype(endDate, apikey):
     result = result.loc[result.groupby('jydm')['ratio_num'].idxmax()]
     result = result.sort_values(by='ratio_num', ascending=False)
     result.rename(columns={'jydm': 'thscode'}, inplace=True)
+    result = result[result['thscode'].isin(chunzhai4list)]
     return result[['thscode', 'bondfundtype']]
 
 def getdingkai():

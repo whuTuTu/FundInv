@@ -21,11 +21,12 @@ os.chdir(path)
 
 def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     """
-    股基的短期标签变成长期标签，包括行业和大小盘和成长价值风格三个标签
-    :param lastYearDate: 年报/半年报交易日
+    股基的短期标签变成长期标签，包括行业和大小盘和成长价值风格、共振因子、集中度五个标签
+    :param lastYearDate:
+    :param lastQuarDate:
     :param apikey: list，["tfzq1556", "752862"]
-    :flag: 1-行业；2-大小盘；3-风格；4-共振因子， 5-集中度
-    :return: 每次返回一个两列的df
+    :param flag: 1-行业；2-风格；3-大小盘；4-共振因子， 5-集中度
+    :return: 两列的df
     """
     # ------------------------------------------生成相关时间变量--------------------------------------------------------
     beginDate = "20180101"
@@ -50,7 +51,7 @@ def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
         return INDDF[['thscode', '行业标签']]
 
     elif flag == 2:
-        # 大小盘标签
+        # 风格
         for i in range(6):
             df1 = getstyle(repDateHY[-(i + 1)], apikey)
             df1.columns = ['thscode', 'Xstyle' + repDateHY[-(i + 1)], 'Ystyle' + repDateHY[-(i + 1)]]
@@ -60,13 +61,13 @@ def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
                 StyleDF = pd.merge(StyleDF, df1, on='thscode')
 
         X_columns = [col for col in StyleDF.columns if col.startswith("Xstyle")]
-        StyleDF['大小盘标签'] = StyleDF.apply(lambda row: f"稳定{row[X_columns[0]]}" if all(
+        StyleDF['风格标签'] = StyleDF.apply(lambda row: f"稳定{row[X_columns[0]]}" if all(
             row[col] == row[X_columns[0]] for col in X_columns) else '风格轮动基金', axis=1)
         StyleDF.to_csv("output/StockFund/marketvalue_Stable.csv")
-        return StyleDF[['thscode', '大小盘标签']]
+        return StyleDF[['thscode', '风格标签']]
 
     elif flag == 3:
-        # 风格标签
+        # 大小盘
         for i in range(6):
             df1 = getstyle(repDateHY[-(i + 1)], apikey)
             df1.columns = ['thscode', 'Xstyle' + repDateHY[-(i + 1)], 'Ystyle' + repDateHY[-(i + 1)]]
@@ -76,10 +77,10 @@ def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
                 StyleDF = pd.merge(StyleDF, df1, on='thscode')
 
         Y_columns = [col for col in StyleDF.columns if col.startswith("Ystyle")]
-        StyleDF['风格标签'] = StyleDF.apply(lambda row: f"稳定{row[Y_columns[0]]}" if all(
+        StyleDF['大小盘标签'] = StyleDF.apply(lambda row: f"稳定{row[Y_columns[0]]}" if all(
             row[col] == row[Y_columns[0]] for col in Y_columns) else '风格轮动基金', axis=1)
         StyleDF.to_csv("output/StockFund/style_Stable.csv")
-        return StyleDF[['thscode', '风格标签']]
+        return StyleDF[['thscode', '大小盘标签']]
 
     elif flag == 4:
         # 共振因子标签（季度数据）

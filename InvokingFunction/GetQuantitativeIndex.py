@@ -10,9 +10,11 @@
 # 载入包
 import numpy as np
 import os
+
 # 更改相对路径
 path = "D:\TFCode\FundInv"
 os.chdir(path)
+
 
 # ------------------------------------------量化指标-------------------------------------------------
 def netvalue2return(netvalue4list):
@@ -24,11 +26,12 @@ def netvalue2return(netvalue4list):
     returns = [0]
     n = len(netvalue4list)
     for i in range(n):
-        if i == (n-1):
+        if i == (n - 1):
             pass
         else:
             returns.append((netvalue4list[i + 1] - netvalue4list[i]) / netvalue4list[i])
     return returns
+
 
 def returns2cumreturns(returns):
     """
@@ -39,9 +42,10 @@ def returns2cumreturns(returns):
     cumreturns = []
     cumreturn = 0
     for oneret in returns:
-        cumreturn = (1+cumreturn)*(1+oneret)-1
+        cumreturn = (1 + cumreturn) * (1 + oneret) - 1
         cumreturns.append(cumreturn)
     return cumreturns
+
 
 def calculate_one_cum_return(netvalue4list):
     """
@@ -50,6 +54,7 @@ def calculate_one_cum_return(netvalue4list):
     :return:
     """
     return (netvalue4list[-1] - netvalue4list[0]) / netvalue4list[0]
+
 
 def calculate_cum_returns(netvalue4list):
     """
@@ -64,6 +69,16 @@ def calculate_cum_returns(netvalue4list):
     for i in range(n):
         cum_returns.append((netvalue4list[i] - netvalue4list[0]) / netvalue4list[0])
     return cum_returns
+
+
+def calculate_sharpe_ratio(netvalue4list):
+    """
+    夏普比率
+    :param netvalue4list:
+    :return:
+    """
+    returns = netvalue2return(netvalue4list)
+    return np.mean(returns) / np.std(returns)
 
 
 def calculate_max_drawdown(netvalue4list):
@@ -81,6 +96,7 @@ def calculate_max_drawdown(netvalue4list):
         drawdowns.append(drawdown)
     max_drawdown = min(drawdowns)  # 最大回撤为回撤序列中的最小值
     return -max_drawdown
+
 
 def calculate_win_rate(netvalue4list):
     """
@@ -108,8 +124,9 @@ def calculate_odds_ratio(netvalue4list):
     odds_ratio = positive_returns / negative_returns
     return odds_ratio
 
+
 # ------------------------------------------超额指标-------------------------------------------------
-def calculate_excess_returns(netvalue4list,standard_netvalue4list):
+def calculate_excess_returns(netvalue4list, standard_netvalue4list):
     """
     计算超额收益
     :param netvalue4list:
@@ -123,7 +140,8 @@ def calculate_excess_returns(netvalue4list,standard_netvalue4list):
     excess_returns = (1 + fund_returns) / (1 + standard_returns) - 1
     return excess_returns.tolist()
 
-def calculate_excess_one_cum_return(netvalue4list,standard_netvalue4list):
+
+def calculate_excess_one_cum_return(netvalue4list, standard_netvalue4list):
     """
     计算累计超额收益
     :param netvalue4list:
@@ -134,7 +152,8 @@ def calculate_excess_one_cum_return(netvalue4list,standard_netvalue4list):
     excess_cum_returns = returns2cumreturns(excess_returns)  # 起点是0
     return excess_cum_returns[-1]
 
-def calculate_excess_cum_returns(netvalue4list,standard_netvalue4list):
+
+def calculate_excess_cum_returns(netvalue4list, standard_netvalue4list):
     """
     计算累计超额收益序列
     :param netvalue4list:
@@ -145,6 +164,7 @@ def calculate_excess_cum_returns(netvalue4list,standard_netvalue4list):
     excess_cum_returns = returns2cumreturns(excess_returns)  # 起点是0
     return excess_cum_returns
 
+
 def calculate_excess_sharpe_ratio(netvalue4list, standard_netvalue4list):
     """
     超额夏普比率
@@ -154,7 +174,8 @@ def calculate_excess_sharpe_ratio(netvalue4list, standard_netvalue4list):
     """
     excess_returns = calculate_excess_returns(netvalue4list, standard_netvalue4list)
     returns = netvalue2return(netvalue4list)
-    return np.mean(excess_returns)/np.std(returns)
+    return np.mean(excess_returns) / np.std(returns)
+
 
 def calculate_excess_max_drawdown(netvalue4list, standard_netvalue4list):
     """
@@ -164,10 +185,11 @@ def calculate_excess_max_drawdown(netvalue4list, standard_netvalue4list):
     :return:
     """
     excess_returns = calculate_excess_returns(netvalue4list, standard_netvalue4list)
-    excess_cum_returns = returns2cumreturns(excess_returns) # 起点是0
-    excess_net = [i+1 for i in excess_cum_returns]
+    excess_cum_returns = returns2cumreturns(excess_returns)  # 起点是0
+    excess_net = [i + 1 for i in excess_cum_returns]
     excess_max_drawdown = calculate_max_drawdown(excess_net)
     return excess_max_drawdown
+
 
 def calculate_excess_win_rate(netvalue4list, standard_netvalue4list):
     """
@@ -180,8 +202,8 @@ def calculate_excess_win_rate(netvalue4list, standard_netvalue4list):
     num_trading_days = len(fund_returns)
     num_positive_returns = 0
     for i in range(num_trading_days):
-        if fund_returns[i]>standard_fund_returns[i]:
-            num_positive_returns = num_positive_returns+1
+        if fund_returns[i] > standard_fund_returns[i]:
+            num_positive_returns = num_positive_returns + 1
     return num_positive_returns / num_trading_days
 
 

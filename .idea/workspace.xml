@@ -5,9 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/TemporaryFile/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetQuantitativeIndex.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetQuantitativeIndex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/BondFundData/NetValue/HYNetValue20230630-20230922.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210630-20210930.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210630-20211231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20210930-20211231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20211231-20220331.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20211231-20220630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220331-20220630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220630-20220930.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220630-20221231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20220930-20221231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230331.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20221231-20230825.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20230331-20230630.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/StockFundData/NetValue/NetValue20230630-20230922.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/H.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ind.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/style.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +86,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -80,7 +105,7 @@
       <recent name="D:\TFCode\FundInv\input\StockData\Style" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Evaluate">
+  <component name="RunManager" selected="Python.index">
     <configuration name="Evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,7 +148,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="GetShortstockfundLabel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="GetData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -135,7 +160,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/InvokingFunction/GetData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,7 +169,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -156,7 +181,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/index.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -173,11 +198,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/invoking function" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TemporaryFile" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/invoking function/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TemporaryFile/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -188,11 +213,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.index" />
         <item itemvalue="Python.Evaluate" />
-        <item itemvalue="Python.FundSum" />
-        <item itemvalue="Python.GetShortstockfundLabel" />
-        <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.GetData" />
+        <item itemvalue="Python.FundSum" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698309817906</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="变更">
+      <option name="closed" value="true" />
+      <created>1698391938987</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698391938987</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

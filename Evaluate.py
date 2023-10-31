@@ -34,7 +34,6 @@ YearDate = getHYtime4list(beginDate, lastYearDate)
 # 读取数据
 fundcode4list = getchunzhaicode()  # 获取纯债基金代码
 print(len(fundcode4list))
-fundchar = ','.join(fundcode4list)
 
 len_time = len(YearDate) - 1
 for i in range(len_time):  # 获取基金净值数据

@@ -217,7 +217,6 @@ def GetbfundnetvalueData(fundcode4list, StartDate, EndDate, apikey):
         NetValue = NetValue_long.pivot(index='time', columns='thscode', values='accumulatedNAV')
         NetValue.to_csv("input/BondFundData/NetValue/HYNetValue" + StartDate + '-' + EndDate + ".csv")
         NetValue = pd.read_csv("input/BondFundData/NetValue/HYNetValue" + StartDate + '-' + EndDate + ".csv")
-        # NetValue.set_index('time', inplace=True)
     return NetValue
 
 
@@ -480,6 +479,7 @@ def Getsfund10stockData(fundcode4list, QDate, apikey):
                 HDF = pd.merge(HDF, df1, on='thscode', how='left')
         HDF.to_csv("input/StockFundData/Top10stock/Qindependent" + QDate + ".csv")
     return HDF
+
 def Getsfund10sumstockData(fundcode4list, QDate, apikey):
     """
     获取股票基金的前十大持仓总和
@@ -498,3 +498,33 @@ def Getsfund10sumstockData(fundcode4list, QDate, apikey):
         HDF = THS_BD(fundcode4list,'ths_top_n_top_stock_mv_to_si_mv_fund',QDate+',10').data
         HDF.to_csv("input/StockFundData/Top10sumstock/Qtop10" + QDate + ".csv")
     return HDF
+
+def GetsfundnetvalueData(fundcode4list, StartDate, EndDate, apikey):
+    """
+    每半年获取一次基金净值数据
+    :param fundcode4list:
+    :param StartDate: 20200630的格式
+    :param EndDate:
+    :param apikey:
+    :return:
+    """
+    thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
+    try:
+        NetValue = pd.read_csv("input/StockFundData/NetValue/HYNetValue" + StartDate + '-' + EndDate + ".csv")
+    except FileNotFoundError:
+        # 一段一段获取数据
+        print("本地文件不存在，尝试从接口获取数据...")
+        date1 = exchangedate1(StartDate)
+        date2 = exchangedate1(EndDate)
+
+        frequency = 300
+        n = int(len(fundcode4list) / frequency)
+        # 末期截面基础数据
+        NetValue_long = THS_HQ(','.join(fundcode4list[n * frequency::]), 'accumulatedNAV', 'CPS:3', date1, date2).data
+        for j in range(n):
+            df1 = THS_HQ(','.join(fundcode4list[j * frequency:(j + 1) * frequency]), 'accumulatedNAV', 'CPS:3', date1, date2).data
+            NetValue_long = pd.concat([NetValue_long, df1])
+        NetValue = NetValue_long.pivot(index='time', columns='thscode', values='accumulatedNAV')
+        NetValue.to_csv("input/StockFundData/NetValue/HYNetValue" + StartDate + '-' + EndDate + ".csv")
+        NetValue = pd.read_csv("input/StockFundData/NetValue/HYNetValue" + StartDate + '-' + EndDate + ".csv")
+    return NetValue
