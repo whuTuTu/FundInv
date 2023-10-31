@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/长好短好vs长好短差.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemporaryFile/Evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetGFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetGFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698719979980</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="变更">
+      <option name="closed" value="true" />
+      <created>1698736837092</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1698736837092</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
