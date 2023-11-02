@@ -9,6 +9,7 @@
 import pandas as pd
 import time
 import matplotlib.pyplot as plt
+import configparser
 from InvokingFunction.BondfundFirstfilter import BondFirstFilter
 from InvokingFunction.GetShortbondfundLabel import getdingkai
 from InvokingFunction.StockfundFirstfilter import StockFirstFilter
@@ -19,13 +20,14 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 解决中文显示乱码的问�
 plt.rcParams['axes.unicode_minus'] = False
 
 start = time.perf_counter()  # 代码开始的时间
-
+config = configparser.ConfigParser()
+config.read("config.ini", encoding="utf-8")
 # 　------------------------------------------全局变量--------------------------------------------------------
 
-endDate = "20230908"
-lastYearDate = "20230630"  # 年报/半年报报告期
-lastQuarDate = "20230630"  # 季报报告期
-apikey = ['tfzq1928','232596']
+endDate = config.get("time", "endDate")
+lastYearDate = config.get("time", "lastYearDate")
+lastQuarDate = config.get("time", "lastQuarDate")
+apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
 choice = 'stock'
 
 # ------------------------------------------以下为代码--------------------------------------------------------

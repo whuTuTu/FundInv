@@ -11,7 +11,7 @@
 import pandas as pd
 from iFinDPy import *  # 同花顺API接口
 import time
-import plotly.graph_objects as go
+import configparser
 import plotly.offline as py_offline
 import matplotlib.pyplot as plt
 from InvokingFunction.GetData import GetsfundnetvalueData, GetbfundnetvalueData
@@ -27,18 +27,18 @@ warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽�
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 解决中文显示乱码的问题
 plt.rcParams['axes.unicode_minus'] = False
 start = time.perf_counter()  # 代码开始的时间
-
+config = configparser.ConfigParser()
+config.read("config.ini", encoding="utf-8")
 # --------------------------------------------全局变量--------------------------------------------------------
+endDate = config.get("time", "endDate")
+lastYearDate = config.get("time", "lastYearDate")
+lastQuarDate = config.get("time", "lastQuarDate")
+apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
 
-endDate = "20231027"
-lastYearDate = "20230630"  # 年报/半年报报告期
-lastQuarDate = "20230630"  # 季报报告期
-# apikey = ["tfzqsx229", "199d5c"]
-apikey = ["tfzq1556", "752862"]
 thsLogin = THS_iFinDLogin("tfzq1556", "752862")
 style_flag = False
-ind_flag = False
-types_flag = True
+ind_flag = True
+types_flag = False
 
 # ------------------------------------------生成相关时间变量--------------------------------------------------------
 beginDate = "20221231"  # 开始时间

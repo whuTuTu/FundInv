@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TemporaryFile/config.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TemporaryFile/配置文件语法备份.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_10_25_9_56____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_10_25_9_56_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FundSum.py" beforeDir="false" afterPath="$PROJECT_DIR$/FundSum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TemporaryFile/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/marketvalue_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/marketvalue_Stable.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/stockfund_label.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/stockfund_label.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/style_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/style_Stable.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/长好短好vs长好短差_股基版.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/长好短好vs长好短差_股基版.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/长好短好vs长好短差.py" beforeDir="false" afterPath="$PROJECT_DIR$/长好短好vs长好短差.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,85 +81,25 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CodeTF/FundInv&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/TFCode/FundInv/TemporaryFile&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;two.files.diff.last.used.folder&quot;: &quot;D:/TFCode/FundInv/output/【公募基金】2023中报（20231011）.zip&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\TFCode\FundInv\TemporaryFile" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\TFCode\FundInv\TemporaryFile" />
+      <recent name="D:\TFCode\FundInv" />
       <recent name="D:\TFCode\FundInv\input\StockFundData\NetValue" />
       <recent name="D:\TFCode\FundInv\input\StockFundData" />
-      <recent name="D:\TFCode\FundInv" />
       <recent name="D:\TFCode\FundInv\input\StockData\Style" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.长好短好vs长好短差">
-    <configuration name="Evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="FundInv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\TFCode\FundInv\TemporaryFile\Evaluate.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="GetData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="FundInv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/InvokingFunction" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/InvokingFunction/GetData.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="FundInv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/index.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.Evaluate (1)">
+    <configuration name="配置文件语法备份" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,7 +111,70 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TemporaryFile/test.py" />
+      <option name="SCRIPT_NAME" value="D:\TFCode\FundInv\TemporaryFile\配置文件语法备份.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="配置文件语法备份" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FundInv" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\TFCode\FundInv\TemporaryFile\配置文件语法备份.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Evaluate (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FundInv" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Evaluate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FundSum" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FundInv" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FundSum.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Evaluate (1)" />
+        <item itemvalue="Python.FundSum" />
+        <item itemvalue="Python.配置文件语法备份" />
+        <item itemvalue="Python.配置文件语法备份" />
         <item itemvalue="Python.长好短好vs长好短差" />
-        <item itemvalue="Python.index" />
-        <item itemvalue="Python.Evaluate" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.GetData" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698736837092</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="变更">
+      <option name="closed" value="true" />
+      <created>1698737218038</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698737218038</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
