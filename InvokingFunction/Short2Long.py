@@ -24,7 +24,7 @@ def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     股基的短期标签变成长期标签，包括行业和大小盘和成长价值风格、共振因子、集中度五个标签
     :param lastYearDate:
     :param lastQuarDate:
-    :param apikey: list，["tfzq1556", "752862"]
+    :param apikey: 
     :param flag: 1-行业；2-风格；3-大小盘；4-共振因子， 5-集中度
     :return: 两列的df
     """
