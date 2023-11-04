@@ -216,7 +216,7 @@ def getindependent(lastQuarDate, apikey):
 def getCR(lastQuarDate, apikey):
     """
     :param lastQuarDate: 季报
-    :param apikey: list，["tfzq1556", "752862"]
+    :param apikey: 
     :return: df
     """
     fundcode4list = getstockfundcode()
