@@ -26,7 +26,7 @@ def StockFirstFilter(endDate, apikey):
     """
     进行股票基金的第一次筛选，得到初筛池
     :param endDate: 最终交易日
-    :param apikey: list，["tfzq1556", "752862"]
+    :param apikey: 
     :return:list，返回基金代码，输出csv文件
     """
     # 接入同花顺API接口
