@@ -35,10 +35,10 @@ lastYearDate = config.get("time", "lastYearDate")
 lastQuarDate = config.get("time", "lastQuarDate")
 apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
 
-thsLogin = THS_iFinDLogin("tfzq1556", "752862")
+thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
 style_flag = False
-ind_flag = True
-types_flag = False
+ind_flag = False
+types_flag = True
 
 # ------------------------------------------生成相关时间变量--------------------------------------------------------
 beginDate = "20221231"  # 开始时间
@@ -137,7 +137,7 @@ if style_flag:
     quantitative4df.to_csv("output/StockFund/风格指数指标.csv")
 
 if types_flag:
-    fundcode4list = getchunzhaicode()  # 获取股票基金代码
+    fundcode4list = getchunzhaicode()
     print(len(fundcode4list))
     len_time = len(HYearDate) - 1
     for i in range(len_time):

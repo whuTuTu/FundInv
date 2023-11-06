@@ -85,7 +85,6 @@ def getbondtype(endDate, apikey):
     """
     chunzhai4list = getchunzhaicode()
     cunzhaiFundRatioDF = GetbfundbondData(chunzhai4list, endDate, apikey)  # 获取数据
-
     cunzhaiFundRatioDF.rename(columns={'p00483_f002': 'thscode', 'p00483_f008': 'ratio'}, inplace=True)
     cunzhaiFundRatioDF['ratio_num'] = pd.to_numeric(cunzhaiFundRatioDF['ratio'], errors='coerce')
     bond4list = cunzhaiFundRatioDF['thscode'].dropna().unique().tolist()
