@@ -7,17 +7,7 @@
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
       <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetShortstockfundLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/StockfundFirstfilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/StockfundFirstfilter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数指标.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数指标.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数指标.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/行业指数指标.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/风格指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/风格指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/风格指数指标.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/风格指数指标.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/quantitative.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/quantitative.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +68,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/TFCode/FundInv/TemporaryFile&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;two.files.diff.last.used.folder&quot;: &quot;D:/TFCode/FundInv/output/【公募基金】2023中报（20231011）.zip&quot;
   }
 }</component>
@@ -94,7 +84,7 @@
       <recent name="D:\TFCode\FundInv\input\StockData\Style" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.index">
+  <component name="RunManager" selected="Python.Evaluate (1)">
     <configuration name="配置文件语法备份" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -223,8 +213,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.index" />
         <item itemvalue="Python.Evaluate (1)" />
+        <item itemvalue="Python.index" />
         <item itemvalue="Python.FundSum" />
         <item itemvalue="Python.配置文件语法备份" />
         <item itemvalue="Python.配置文件语法备份" />
@@ -328,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698904137322</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="变更">
+      <option name="closed" value="true" />
+      <created>1699239129416</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699239129416</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -8,6 +8,7 @@
 """
 # 载入包
 import pandas as pd
+import configparser
 from iFinDPy import *  # 同花顺API接口
 from InvokingFunction.GetData import GetbfundnetvalueData, GetsfundnetvalueData
 from InvokingFunction.GetGFunction import exchangedate1, getHYtime4list, getchunzhaicode, getstockfundcode
@@ -15,14 +16,13 @@ from InvokingFunction.GetSFunction import gettopnlist, returndf2fig, indexreturn
 import plotly.graph_objects as go
 import plotly.offline as py_offline
 import matplotlib.pyplot as plt
-
+config = configparser.ConfigParser()
+config.read("config.ini", encoding="utf-8")
 # --------------------------------------------全局变量--------------------------------------------------------
-endDate = "20231027"
-lastYearDate = "20230630"  # 年报/半年报报告期
-lastQuarDate = "20230630"  # 季报报告期
-# apikey = ["tfzqsx229", "199d5c"]
-# apikey = ["tfzq1556", "752862"]
-apikey = ["tfzq1928", "232596"]
+endDate = config.get("time", "endDate")
+lastYearDate = config.get("time", "lastYearDate")
+lastQuarDate = config.get("time", "lastQuarDate")
+apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
 num_pen = 0.1  # 取前num_pen的基金构成指数
 n1 = 3  # 近3年

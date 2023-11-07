@@ -84,8 +84,8 @@ if choice == 'chunzhai':
     n2 = 1  # 近1年
     fundgg4list = gettopnlist(n1, n2, partfundcode4list, NetValueDF, endDate, num_pen=1,choice='gg')
     fundggnum4list = range(len(fundgg4list))
-    quantitative4df = pd.DataFrame({'thscode':fundgg4list,
-                                    '总排名':fundggnum4list})
+    quantitative4df = pd.DataFrame({'thscode': fundgg4list,
+                                    '总排名': fundggnum4list})
     stockfundlable4df = pd.read_csv("output/ChunzhaiFund/chunzhai_label.csv")
     stockfundlable4df.drop('Unnamed: 0', axis=1, inplace=True)
     quantitative4df = pd.merge(quantitative4df, stockfundlable4df, on='thscode', how='left')
