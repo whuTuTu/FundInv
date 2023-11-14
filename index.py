@@ -5,7 +5,7 @@
 @IDE     ：PyCharm
 @Author  ：tutu
 @Date    ：2023-08-24 10:29
-构建基金指数序列为短期标签
+定期跟踪指数
 """
 # 载入包
 import pandas as pd
@@ -33,11 +33,11 @@ config.read("config.ini", encoding="utf-8")
 endDate = config.get("time", "endDate")
 lastYearDate = config.get("time", "lastYearDate")
 lastQuarDate = config.get("time", "lastQuarDate")
-apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
+apikey = [config.get("apikey", "ID2"),config.get("apikey", "password2")]
 
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
-style_flag = False
-ind_flag = False
+style_flag = True
+ind_flag = True
 types_flag = True
 
 # ------------------------------------------生成相关时间变量--------------------------------------------------------
@@ -86,9 +86,10 @@ if ind_flag:
             ReturnDF = pd.concat([ReturnDF, Return])
         lastnet = Return.iloc[-1].tolist()
     fig = returndf2fig(ReturnDF)
+    fig.update_layout(title_text='行业指数')
     py_offline.plot(fig, filename='output/StockFund/行业指数.html')
     quantitative4df = indexreturn2quantitative(types, ReturnDF)
-    quantitative4df.to_csv("output/StockFund/行业指数指标.csv")
+    quantitative4df.to_csv('output/StockFund/行业指数指标'+endDate+'.csv')
 
 if style_flag:
     fundcode4list = getstockfundcode()  # 获取股票基金代码
@@ -132,9 +133,10 @@ if style_flag:
             ReturnDF = pd.concat([ReturnDF, Return])
         lastnet = Return.iloc[-1].tolist()
     fig = returndf2fig(ReturnDF)
+    fig.update_layout(title_text='风格指数')
     py_offline.plot(fig, filename='output/StockFund/风格指数.html')
     quantitative4df = indexreturn2quantitative(types, ReturnDF)
-    quantitative4df.to_csv("output/StockFund/风格指数指标.csv")
+    quantitative4df.to_csv("output/StockFund/风格指数指标"+endDate+".csv")
 
 if types_flag:
     fundcode4list = getchunzhaicode()
@@ -145,7 +147,6 @@ if types_flag:
         MyFundDF = getbondtype(HYearDate[i], apikey)
         NetValue = GetbfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
         NetValue.set_index('time', inplace=True)
-        print(MyFundDF.shape)
 
         # 分类基金
         types = ['信用债', '利率债']
@@ -178,9 +179,10 @@ if types_flag:
             ReturnDF = pd.concat([ReturnDF, Return])
         lastnet = Return.iloc[-1].tolist()
     fig = returndf2fig(ReturnDF)
+    fig.update_layout(title_text='债券种类指数')
     py_offline.plot(fig, filename='output/ChunzhaiFund/债券种类指数.html')
     quantitative4df = indexreturn2quantitative(types, ReturnDF)
-    quantitative4df.to_csv("output/ChunzhaiFund/债券种类指数指标.csv")
+    quantitative4df.to_csv("output/ChunzhaiFund/债券种类指数指标"+endDate+".csv")
 
 
 

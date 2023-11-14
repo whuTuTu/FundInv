@@ -28,11 +28,7 @@ def GetbondTHScode(fundcode4list):
     :param fundcode4list:
     :return: df
     """
-    bond4df = THS_toTHSCODE(','.join(fundcode4list),
-                            'mode:seccode;sectype:002,002001,002003,002005,002006,002007,002007001,002007002,002007003,'
-                            '002007004,002007005,002007006,002008,002009,002010,002010001,002010002,002010003,002010004,'
-                            '002010005,002010006,002010007,002010008,002012,002015,002018,002020,002021,002022,002023,'
-                            '002024;;tradestatus:2;isexact:0').data
+    bond4df = THS_toTHSCODE(','.join(fundcode4list),'mode:seccode;sectype:002,002001,002003,002005,002006,002007,002007001,002007002,002007003,002007004,002007005,002007006,002008,002009,002010,002010001,002010002,002010003,002010004,002010005,002010006,002010007,002010008,002012,002015,002018,002020,002021,002022,002023,002024;;tradestatus:2;isexact:0').data
     return bond4df
 
 
@@ -167,7 +163,7 @@ def GetbfundbondData(fundcode4list, HYDate, apikey):
     """
     thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
     try:
-        fund4df = pd.read_csv("input/BondFundData/Bond/HYBond" + HYDate + ".csv")
+        fund4df = pd.read_csv("input/BondFundData/Bond/HYBond" + HYDate + ".csv", dtype={'p00483_f002': str})
         fund4df.drop('Unnamed: 0', axis=1, inplace=True)
     except FileNotFoundError:
         print("本地文件不存在，尝试从接口获取数据...")
@@ -449,7 +445,7 @@ def GetsfundastockData(fundcode4list, HYDate, apikey):
     except FileNotFoundError:
         print("本地文件不存在，尝试从接口获取数据...")
         # 获取全部基金持仓数据
-        FundRatioDF = THS_DR('p00475', 'bgqlb=' + HYDate + ';jjlb=' + exchangedate1(fundcode4list) + ';tzlx=0',
+        FundRatioDF = THS_DR('p00475', 'bgqlb=' + HYDate + ';jjlb=' + ','.join(fundcode4list) + ';tzlx=0',
                              'jydm:Y,jydm_mc:Y,p00475_f001:Y,p00475_f002:Y,p00475_f009:Y', 'format:dataframe').data
         FundRatioDF.to_csv("input/StockFundData/Ratio/HYratio" + HYDate + ".csv")
 

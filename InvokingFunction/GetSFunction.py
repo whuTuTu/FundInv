@@ -185,7 +185,7 @@ def gettopnlist(n1,n2,partfundcode4list,NetValueDF,endDate,num_pen,choice='gg'):
 
     # 近三年指标
     start_date5Y = str(int(endDate[0:4]) - n1) + endDate[4::]  # 时间往前推5年
-    start_date1Y = str(int(endDate[0:4]) - n2) + endDate[4::]  # 时间往前推1年
+    start_date1Y = str(int(endDate[0:4]) - n2) + endDate[4::]
 
     end_date = endDate
     cumreturn5Y4list = []  # 近5年累计收益
@@ -257,3 +257,4 @@ def gettopnlist(n1,n2,partfundcode4list,NetValueDF,endDate,num_pen,choice='gg'):
     quantitative4df = quantitative4df.sort_values(by='总排名', ascending=False)  # 降序排列
     fund4list = df2list(quantitative4df.iloc[:, [0]])[0:int(len(quantitative4df) * num_pen)]
     return fund4list
+

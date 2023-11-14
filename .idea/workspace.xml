@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/InvokingFunction/Getindex.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/TemporaryFile/长好短好vs长好短差.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/主动基指数vs被动基金.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TemporaryFile/Evaluate.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TemporaryFile/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemporaryFile/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/长好短好vs长好短差_纯债版.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/长好短好vs长好短差_纯债版.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/长好短好vs长好短差_股基版.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/长好短好vs长好短差_股基版.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/bondtype_stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/bondtype_stable.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数指标.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数指标.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/风格指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/风格指数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/StockFund/风格指数指标.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/长好短好vs长好短差.py" beforeDir="false" afterPath="$PROJECT_DIR$/长好短好vs长好短差.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,13 +83,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/TFCode/FundInv/TemporaryFile&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/TFCode/FundInv/InvokingFunction&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;two.files.diff.last.used.folder&quot;: &quot;D:/TFCode/FundInv/output/【公募基金】2023中报（20231011）.zip&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\TFCode\FundInv\InvokingFunction" />
       <recent name="D:\TFCode\FundInv\TemporaryFile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -88,28 +101,7 @@
       <recent name="D:\TFCode\FundInv\input\StockData\Style" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.长好短好vs长好短差">
-    <configuration name="配置文件语法备份" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="FundInv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\TFCode\FundInv\TemporaryFile\配置文件语法备份.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.Evaluate (1)">
     <configuration name="Evaluate (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -131,7 +123,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="FundSum" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Getindex" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -139,11 +131,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/InvokingFunction" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FundSum.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/InvokingFunction/Getindex.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -217,11 +209,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.长好短好vs长好短差" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.Evaluate (1)" />
         <item itemvalue="Python.index" />
-        <item itemvalue="Python.FundSum" />
+        <item itemvalue="Python.长好短好vs长好短差" />
+        <item itemvalue="Python.Getindex" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -330,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699239129416</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="更改为半年度频率柱状图">
+      <option name="closed" value="true" />
+      <created>1699342262325</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699342262325</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -350,6 +350,7 @@
     <MESSAGE value="股票基金代码更新" />
     <MESSAGE value="删去多余的文件" />
     <MESSAGE value="变更" />
-    <option name="LAST_COMMIT_MESSAGE" value="变更" />
+    <MESSAGE value="更改为半年度频率柱状图" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改为半年度频率柱状图" />
   </component>
 </project>
