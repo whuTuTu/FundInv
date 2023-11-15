@@ -10,7 +10,6 @@
 from iFinDPy import *  # 同花顺API接口
 import pandas as pd
 import warnings
-
 from InvokingFunction.GetData import GetbfundbasicData
 from InvokingFunction.GetGFunction import exchangedate1, getQtime4liet
 
@@ -30,9 +29,8 @@ def BondFirstFilter(endDate, apikey):
     beginDate = "20180101"
     repDateQ = getQtime4liet(beginDate, endDate)
     lastRepDate = repDateQ[-1]
-    lastRepDate1 = exchangedate1(lastRepDate)
     # ------------------------------------------下面为代码------------------------------------------------------------
-    AllFundDF = GetbfundbasicData(lastRepDate, apikey) # 获取全市场数据
+    AllFundDF = GetbfundbasicData(lastRepDate, apikey)  # 获取全市场数据
     print('基金池总个数为：{}'.format(len(AllFundDF)))
 
     # 只保留A份额的基金
@@ -76,9 +74,13 @@ def BondFirstFilter(endDate, apikey):
             chunzhai = df4
         else:
             zhuanzhai = df4
-    cunzhai4list = chunzhai.iloc[:, [0]].values.tolist()
-    cunzhai4list = [item for sublist in cunzhai4list for item in sublist]
-    chunzhai = filterFundDF[filterFundDF['thscode'].isin(cunzhai4list)]
+
+    # 纯债基金成立至少五年
+    chunzhai = chunzhai[chunzhai['ths_found_years_fund'] >= 5]
+
+    chunzhai4list = chunzhai.iloc[:, [0]].values.tolist()
+    chunzhai4list = [item for sublist in chunzhai4list for item in sublist]
+    chunzhai = filterFundDF[filterFundDF['thscode'].isin(chunzhai4list)]
     zhuanzai4list = zhuanzhai.iloc[:, [0]].values.tolist()
     zhuanzai4list = [item for sublist in zhuanzai4list for item in sublist]
     zhuanzhai = filterFundDF[filterFundDF['thscode'].isin(zhuanzai4list)]

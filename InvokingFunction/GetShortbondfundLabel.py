@@ -112,7 +112,7 @@ def getbondtype(endDate, apikey):
     result = result.sort_values(by='ratio_num', ascending=False)
     result.rename(columns={'jydm': 'thscode'}, inplace=True)
     result = result[result['thscode'].isin(chunzhai4list)]
-    return result[['thscode', 'bondfundtype']]
+    return result[['thscode', 'bondfundtype','ratio_num']]
 
 def getdingkai():
     """

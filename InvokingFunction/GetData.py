@@ -79,13 +79,13 @@ def GetbfundbasicData(QDate, apikey):
         # 末期截面基础数据
         AllFundDF = THS_BD(AllFund[n * 1000::],
                            'ths_fund_code_fund;ths_fund_short_name_fund;ths_fund_supervisor_fund'
-                           ';ths_fund_manager_current_fund;ths_invest_type_second_classi_fund;ths_mergesize_fund',
-                           ';;;;;' + exchangedate1(QDate)).data
+                           ';ths_fund_manager_current_fund;ths_invest_type_second_classi_fund;ths_mergesize_fund;ths_found_years_fund',
+                           ';;;;;' + exchangedate1(QDate)+";"+ exchangedate1(QDate)).data
         for i in range(n):
             df1 = THS_BD(AllFund[i * 1000:(i + 1) * 1000],
                          'ths_fund_code_fund;ths_fund_short_name_fund;ths_fund_supervisor_fund'
-                         ';ths_fund_manager_current_fund;ths_invest_type_second_classi_fund;ths_mergesize_fund',
-                         ';;;;;' + exchangedate1(QDate)).data
+                         ';ths_fund_manager_current_fund;ths_invest_type_second_classi_fund;ths_mergesize_fund;ths_found_years_fund',
+                         ';;;;;' + exchangedate1(QDate)+";"+exchangedate1(QDate)).data
             AllFundDF = pd.concat([AllFundDF, df1])
         AllFundDF.to_csv("input/BondFundData/Basic/Qbasic" + QDate + ".csv")
 
@@ -318,6 +318,26 @@ def GetstockstyleData(HYDate, apikey):
         aStockInfoDF = pd.read_csv("input/StockFundData/Style/HYstyle" + HYDate + ".csv")
         aStockInfoDF.drop('Unnamed: 0', axis=1, inplace=True)
     return aStockInfoDF
+
+def GetindindexData(beginDate,endDate,apikey):
+    """
+    获取中信产业指数
+    :param beginDate:
+    :param endDate:
+    :param apikey:
+    :return:
+    """
+    thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
+    try:
+        ind4df = pd.read_csv("input/Index/Ind/Ind" + beginDate+"-"+ endDate + ".csv")
+        ind4df.drop('Unnamed: 0', axis=1, inplace=True)
+    except FileNotFoundError:
+        print("本地文件不存在，尝试从接口获取数据...")
+        ind4df = THS_HQ('CI005925.CI,CI005926.CI,CI005928.CI,CI005929.CI,CI005930.CI,CI005931.CI', 'close', 'CPS:3',
+                        exchangedate1(beginDate), exchangedate1(endDate)).data
+        ind4df.to_csv("input/Index/Ind/Ind" + beginDate+"-"+ endDate + ".csv")
+    ind4df = ind4df.pivot(index='time', columns='thscode', values='close')
+    return ind4df
 
 # -----------------------------------------------获取股票基金相关数据-----------------------------------------------
 def GetsfundbasicData(QDate, apikey):

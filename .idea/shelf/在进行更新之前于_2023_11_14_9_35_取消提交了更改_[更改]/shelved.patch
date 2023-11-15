@@ -1,0 +1,23 @@
+Index: config.ini
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.ini b/config.ini
+new file mode 100644
+--- /dev/null	(date 1699923737735)
++++ b/config.ini	(date 1699923737735)
+@@ -0,0 +1,13 @@
++[time]
++endDate = 20231110
++lastYearDate = 20230630
++lastQuarDate = 20230630
++beginDate = 20171231
++
++[apikey]
++ID1 = tfzq1556
++password1 = 752862
++ID2 = tfzq1928
++password2 = 232596
++
++

@@ -90,7 +90,7 @@ def getindex(flag):
         fundcode4list = getstockfundcode()  # 获取股票基金代码
         len_time = len(HYearDate) - 1
         for i in range(len_time):
-            indlong4df = Getstockfund4Long(HYearDate[i], lastQuarDate, apikey, flag=1)
+            indlong4df = Getstockfund4Long(HYearDate[-1], lastQuarDate, apikey, flag=1)
             styleshort4df = getstyle(HYearDate[i], apikey)
             MyFundDF = pd.merge(indlong4df, styleshort4df, on='thscode', how='left')  # 合并数据
             NetValue = GetsfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
@@ -163,6 +163,7 @@ def getindex(flag):
             else:
                 ReturnDF = pd.concat([ReturnDF, Return])
             lastnet = Return.iloc[-1].tolist()
+
     ReturnDF = ReturnDF.reset_index()
     ReturnDF = ReturnDF.drop_duplicates(subset='time', keep='first')
     ReturnDF.set_index('time', inplace=True)

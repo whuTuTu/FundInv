@@ -46,6 +46,7 @@ QuanDate = getQtime4liet(beginDate, lastQuarDate)
 HYearDate = getHYtime4list(beginDate, lastYearDate)
 QuanDate.append(endDate)
 HYearDate.append(endDate)
+
 # ------------------------------------------以下为代码-------------------------------------------------------------
 if ind_flag:
     fundcode4list = getstockfundcode()  # 获取股票基金代码
