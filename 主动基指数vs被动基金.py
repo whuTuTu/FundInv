@@ -12,6 +12,8 @@ from InvokingFunction.GetQuantitativeIndex import calculate_excess_one_cum_retur
 from InvokingFunction.Getindex import getindex
 from iFinDPy import *  # 同花顺API接口
 import configparser
+import plotly.graph_objects as go
+import plotly.offline as py_offline
 config = configparser.ConfigParser()
 config.read("config.ini", encoding="utf-8")
 # --------------------------------------------全局变量--------------------------------------------------------
@@ -19,39 +21,40 @@ beginDate = config.get("time", "beginDate")
 endDate = config.get("time", "endDate")
 lastYearDate = config.get("time", "lastYearDate")
 lastQuarDate = config.get("time", "lastQuarDate")
-apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
+apikey = [config.get("apikey", "ID1"), config.get("apikey", "password1")]
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
 # ------------------------------------------生成相关时间变量---------------------------------------------------
 QuanDate = getQtime4liet(beginDate, lastQuarDate)
-print(QuanDate)
 HYearDate = getHYtime4list(beginDate, lastYearDate)
-print(HYearDate)
 # ------------------------------------------以下为代码--------------------------------------------------------
-indindex4df = getindex(flag=1)
-print(indindex4df.head())
-ind4df = GetindindexData(beginDate,endDate,apikey)
-print(ind4df.head())
-num = min(len(ind4df), len(indindex4df))
 cumrate4list = []
-cumrateY4list = []
 partHYDate = HYearDate[2::]
-print(partHYDate)
-for i in range(6):
-    cumrate4list.append(calculate_excess_one_cum_return(indindex4df.iloc[-num::,i].tolist(),ind4df.iloc[-num::,i].tolist()))
-    list1 = []
-    for j in range(len(partHYDate)-1):
-        print("-------------"+partHYDate[j]+"-----------------")
-        start_date = partHYDate[j]
-        end_date = partHYDate[j+1]
-        onenetvalue4list = indindex4df[start_date:end_date].iloc[:, i].values.tolist()
-        print(len(onenetvalue4list))
-        indindexnetvalue4list = ind4df[start_date:end_date].iloc[:, i].values.tolist()
-        print(len(indindexnetvalue4list))
-        num_min = min(len(onenetvalue4list),len(indindexnetvalue4list))
-        indindex4df[start_date:end_date].iloc[:, i].to_csv("test1.csv")
-        ind4df[start_date:end_date].iloc[:, i].to_csv("test2.csv")
-        cumrate3y4float = calculate_excess_one_cum_return(onenetvalue4list[:num_min], indindexnetvalue4list[:num_min])
-        list1.append(cumrate3y4float)
-    cumrateY4list.append(list1)
-print(cumrateY4list)
+len_date = len(partHYDate)-1
+for i in range(len_date):
+    print("-------------" + partHYDate[i] + "-----------------")
+    # 半年度获取数据
+    indindex4df = getindex(flag=1,yesend=False,beginDate=partHYDate[i],lastYearDate=partHYDate[i+1])
+    ind4df = GetindindexData(beginDate=partHYDate[i], endDate=partHYDate[i+1], apikey = apikey)
+    nummin = min(len(ind4df),len(indindex4df))
 
+    list1 = []
+    for j in range(6):
+        list1.append(calculate_excess_one_cum_return(indindex4df.iloc[-nummin::, j].tolist(), ind4df.iloc[-nummin::, j].tolist()))
+    cumrate4list.append(list1)
+print(cumrate4list)
+cumrate4listnew = [[cumrate4list[i][j]*100 for i in range(len(cumrate4list))] for j in range(len(cumrate4list[0]))]
+print(cumrate4listnew)
+colnames = indindex4df.columns
+print(colnames)
+fig = go.Figure(data=[
+        go.Bar(name=colnames[0], x=partHYDate[0:9], y=cumrate4listnew[0], text=cumrate4listnew[0],textposition="auto"),
+        go.Bar(name=colnames[1], x=partHYDate[0:9], y=cumrate4listnew[1], text=cumrate4listnew[1],textposition="auto"),
+        go.Bar(name=colnames[2], x=partHYDate[0:9], y=cumrate4listnew[2], text=cumrate4listnew[2],textposition="auto"),
+        go.Bar(name=colnames[3], x=partHYDate[0:9], y=cumrate4listnew[3], text=cumrate4listnew[3],textposition="auto"),
+        go.Bar(name=colnames[4], x=partHYDate[0:9], y=cumrate4listnew[4], text=cumrate4listnew[4],textposition="auto"),
+        go.Bar(name=colnames[5], x=partHYDate[0:9], y=cumrate4listnew[5], text=cumrate4listnew[5],textposition="auto")
+    ])
+fig.update_layout(barmode='group')
+fig.update_layout(title_text='行业超额检测')
+fig.update_traces(texttemplate='%{text:.2f}', textposition='outside')
+py_offline.plot(fig, filename='output/StockFund/行业超额检测.html')

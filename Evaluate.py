@@ -166,8 +166,7 @@ if choice == 'chunzhai':
     quantitative4df = pd.DataFrame({
         'thscode': partfundcode4list2,
         '3年滚动累计超额收益率均值': cumrate3y4list,
-        '3年滚动超额夏普比例': shaperatio3y4list,
-
+        '3年滚动超额夏普比例': shaperatio3y4list
     })
 
     quantitative4df['3年滚动累计超额收益率均值排名'] = quantitative4df['3年滚动累计超额收益率均值'].rank(method='first')  # 升序排列，数值较小的获得较低的排名

@@ -16,11 +16,13 @@ import plotly.offline as py_offline
 import matplotlib.pyplot as plt
 import os
 from InvokingFunction.GetData import GetsfundnetvalueData, GetbfundnetvalueData
-from InvokingFunction.GetGFunction import exchangedate1, getQtime4liet, getHYtime4list, getstockfundcode, getchunzhaicode
+from InvokingFunction.GetGFunction import exchangedate1, getQtime4liet, getHYtime4list, getstockfundcode, \
+    getchunzhaicode
 import warnings
 from InvokingFunction.GetShortbondfundLabel import getbondtype
 from InvokingFunction.GetShortstockfundLabel import getstyle, getindustry
 from InvokingFunction.Short2Long import Getstockfund4Long
+
 warnings.filterwarnings(action='ignore')
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 解决中文显示乱码的问题
@@ -34,21 +36,29 @@ os.chdir(path)
 endDate = config.get("time", "endDate")
 lastYearDate = config.get("time", "lastYearDate")
 lastQuarDate = config.get("time", "lastQuarDate")
-apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
+beginDate = config.get("time", "beginDate")
+apikey = [config.get("apikey", "ID1"), config.get("apikey", "password1")]
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
 
-def getindex(flag):
+
+def getindex(flag,yesend = True, beginDate=beginDate, lastQuarDate=lastQuarDate, lastYearDate=lastYearDate, endDate=endDate):
     """
 
     :param flag: 1-股基行业；2-行业均衡性股基的风格；3-债基的利率信用分类
+    :param beginDate:
+    :param lastQuarDate:
+    :param lastYearDate:
+    :param endDate:
     :return:
     """
     # ------------------------------------------生成相关时间变量--------------------------------------------------------
-    beginDate = "20171231"  # 开始时间
     QuanDate = getQtime4liet(beginDate, lastQuarDate)
     HYearDate = getHYtime4list(beginDate, lastYearDate)
-    QuanDate.append(endDate)
-    HYearDate.append(endDate)
+    if yesend == True:
+        QuanDate.append(endDate)
+        HYearDate.append(endDate)
+    else:
+        pass
     # ------------------------------------------以下为代码-------------------------------------------------------------
     if flag == 1:
         fundcode4list = getstockfundcode()  # 获取股票基金代码
@@ -58,7 +68,8 @@ def getindex(flag):
             NetValue = GetsfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
             NetValue.set_index('time', inplace=True)
             # 分类基金
-            types = ['周期行业基金', '医药行业基金', '制造行业基金', '金融地产行业基金', 'TMT行业基金', '消费行业基金','行业均衡基金']
+            types = ['周期行业基金', '医药行业基金', '制造行业基金', '金融地产行业基金', 'TMT行业基金', '消费行业基金',
+                     '行业均衡基金']
             for j in range(len(types)):
                 fund0 = MyFundDF[MyFundDF['INDtype'] == types[j]].iloc[:, [0]].values.tolist()
                 fund0 = [item for sublist in fund0 for item in sublist]
@@ -98,7 +109,7 @@ def getindex(flag):
 
             # 分类基金
             MyFundDF = MyFundDF[MyFundDF['行业标签'] == '稳定行业均衡基金']
-            types = ['均衡型','成长型','价值型','成长-均衡型','均衡-价值型']
+            types = ['均衡型', '成长型', '价值型', '成长-均衡型', '均衡-价值型']
             for j in range(len(types)):
                 fund0 = MyFundDF[MyFundDF['Xstyle'] == types[j]].iloc[:, [0]].values.tolist()
                 fund0 = [item for sublist in fund0 for item in sublist]
@@ -164,12 +175,7 @@ def getindex(flag):
                 ReturnDF = pd.concat([ReturnDF, Return])
             lastnet = Return.iloc[-1].tolist()
 
-    ReturnDF = ReturnDF.reset_index()
-    ReturnDF = ReturnDF.drop_duplicates(subset='time', keep='first')
-    ReturnDF.set_index('time', inplace=True)
-    return ReturnDF
-
-
-
-
-
+    ReturnDF1 = ReturnDF.reset_index()
+    ReturnDF1 = ReturnDF1.drop_duplicates(subset='time', keep='first')
+    ReturnDF1.set_index('time', inplace=True)
+    return ReturnDF1
