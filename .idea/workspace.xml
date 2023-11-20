@@ -7,31 +7,7 @@
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="">
       <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FundSum.py" beforeDir="false" afterPath="$PROJECT_DIR$/FundSum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InvokingFunction/GetData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetShortbondfundLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/Getindex.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Getindex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/2023中报（20231011）/股票基金评分.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/output/2023中报（20231011）/股票基金评分.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/Company_stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/Company_stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/bondtype_stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/bondtype_stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/chunzhai_label.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/chunzhai_label.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/duration_stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/duration_stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/lever_stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/lever_stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/quantitative.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/CR_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/CR_Stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/independence_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/independence_Stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/marketvalue_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/marketvalue_Stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/stockfund_filter.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/stockfund_filter.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/stockfund_label.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/stockfund_label.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/style_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/style_Stable.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/股票基金以行业指数为基准打分.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/风格指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/风格指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemporaryFile/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +85,7 @@
       <recent name="D:\TFCode\FundInv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Evaluate (1)">
+  <component name="RunManager" selected="Python.主动基指数vs被动基金">
     <configuration name="Evaluate (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -194,7 +170,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="主动基指数vs被动基金" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FundInv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -206,7 +182,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\TFCode\FundInv\TemporaryFile\test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/主动基指数vs被动基金.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -280,11 +256,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.主动基指数vs被动基金" />
         <item itemvalue="Python.Evaluate (1)" />
         <item itemvalue="Python.FundSum" />
         <item itemvalue="Python.index" />
         <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -425,7 +401,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700111550614</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="更新">
+      <option name="closed" value="true" />
+      <created>1700467417181</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700467417181</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

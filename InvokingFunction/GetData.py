@@ -350,7 +350,7 @@ def GetindindexData(beginDate,endDate,apikey):
         ind4df.drop('Unnamed: 0', axis=1, inplace=True)
     except FileNotFoundError:
         print("本地文件不存在，尝试从接口获取数据...")
-        ind4df = THS_HQ('CI005925.CI,CI005926.CI,CI005928.CI,CI005929.CI,CI005930.CI,CI005931.CI', 'close', 'CPS:3',
+        ind4df = THS_HQ('CI005925.CI,CI005930.CI,CI005926.CI,CI005931.CI,CI005929.CI,CI005928.CI', 'close', 'CPS:3',
                         exchangedate1(beginDate), exchangedate1(endDate)).data
         ind4df.to_csv("input/Index/Ind/Ind" + beginDate+"-"+ endDate + ".csv")
     ind4df = ind4df.pivot(index='time', columns='thscode', values='close')
