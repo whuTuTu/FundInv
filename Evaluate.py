@@ -27,6 +27,8 @@ lastQuarDate = config.get("time", "lastQuarDate")
 apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
 choice = 'chunzhai'
+# choice = 'stock'
+
 # ------------------------------------------生成相关时间变量---------------------------------------------------
 QuanDate = getQtime4liet(beginDate, lastQuarDate)
 HYearDate = getHYtime4list(beginDate, lastYearDate)
@@ -52,7 +54,7 @@ if choice == 'stock':
 
     # 指数的走势数据
     index4ind = getindex(flag=1)  # 行业走势
-    index4style = getindex(flag=2) # 风格走势
+    index4style = getindex(flag=2)  # 风格走势
 
     # 数据缺失值暂时不管
     partfundcode4list = NetValueDF.columns
@@ -77,7 +79,7 @@ if choice == 'stock':
         # 长期指标：滚动三年的数据
         list1 = []
         list2 = []
-        for onetime in QuanDate[-8::]:
+        for onetime in HYearDate[-8::]:
             n1 = 3  # 滚动三年
             start_date3Y = str(int(onetime[0:4]) - n1) + onetime[4::]
             end_date = onetime
@@ -108,7 +110,7 @@ if choice == 'stock':
     # 读取基金基本信息数据
     basicdata4df = pd.read_csv("output/StockFund/stockfund_label.csv")
     quantitative4df = pd.merge(basicdata4df,quantitative4df,on='thscode',how='right')
-    quantitative4df.to_csv("output/StockFund/股票基金以行业指数为基准打分.csv")
+    quantitative4df.to_csv("output/StockFund/股票基金打分.csv")
 
 if choice == 'chunzhai':
     # 基金净值数据
@@ -177,4 +179,4 @@ if choice == 'chunzhai':
     # 读取基金基本信息数据
     basicdata4df = pd.read_csv("output/ChunzhaiFund/chunzhai_label.csv")
     quantitative4df = pd.merge(basicdata4df, quantitative4df, on='thscode', how='right')
-    quantitative4df.to_csv("output/StockFund/债券基金以债券种类指数为基准打分.csv")
+    quantitative4df.to_csv("output/StockFund/债券基金打分.csv")

@@ -152,6 +152,23 @@ def GetbfundleverData(fundcode4list, QDate, apikey):
         fund4df.to_csv("input/BondFundData/Lever/Qlever" + QDate + ".csv")
     return fund4df
 
+def GetbfundtyepData(fundcode4list,QDate, apikey):
+    """
+    获取债券基金的券种比例
+    :param fundcode4list:
+    :param QDate:
+    :param apikey:
+    :return:
+    """
+    thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
+    try:
+        fund4df = pd.read_csv("input/BondFundData/Bond/Qbondtype" + QDate + ".csv")
+        fund4df.drop('Unnamed: 0', axis=1, inplace=True)
+    except FileNotFoundError:
+        print("本地文件不存在，尝试从接口获取数据...")
+        fund4df = THS_BD(','.join(fundcode4list),'ths_nb_mv_to_bond_invest_mv_fund;ths_zcxjrzszzzqtzszb_fund;ths_cbb_to_bond_invest_mv_fund',QDate+';'+QDate+';'+QDate).data
+        fund4df.to_csv("input/BondFundData/Bond/Qbondtype" + QDate + ".csv")
+    return fund4df
 
 def GetbfundbondData(fundcode4list, HYDate, apikey):
     """

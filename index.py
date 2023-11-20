@@ -36,8 +36,8 @@ lastQuarDate = config.get("time", "lastQuarDate")
 apikey = [config.get("apikey", "ID2"),config.get("apikey", "password2")]
 
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
-style_flag = True
-ind_flag = True
+style_flag = False
+ind_flag = False
 types_flag = True
 
 # ------------------------------------------生成相关时间变量--------------------------------------------------------
@@ -142,12 +142,14 @@ if style_flag:
 if types_flag:
     fundcode4list = getchunzhaicode()
     print(len(fundcode4list))
-    len_time = len(HYearDate) - 1
+    len_time = len(QuanDate) - 1
     for i in range(len_time):
-        print("------------------------{0}------------------------".format(HYearDate[i]))
-        MyFundDF = getbondtype(HYearDate[i], apikey)
-        NetValue = GetbfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
+        print("------------------------{0}------------------------".format(QuanDate[i]))
+        MyFundDF = getbondtype(QuanDate[i], apikey)
+        NetValue = GetbfundnetvalueData(fundcode4list, QuanDate[i], QuanDate[i + 1], apikey)  # 获取半年的净值数据
         NetValue.set_index('time', inplace=True)
+        partfundcode4list = NetValue.columns
+        MyFundDF = MyFundDF[MyFundDF['thscode'].isin(partfundcode4list)]
 
         # 分类基金
         types = ['信用债', '利率债']

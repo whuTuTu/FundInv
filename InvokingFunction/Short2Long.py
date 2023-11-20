@@ -12,19 +12,23 @@ from InvokingFunction.GetShortstockfundLabel import getindustry, getstyle, getin
 from InvokingFunction.GetGFunction import getHYtime4list, getQtime4liet
 from InvokingFunction.GetShortbondfundLabel import getfundcompany, getbondtype, getlever, getduration
 import pandas as pd
+import configparser
 import os
 import warnings
 warnings.filterwarnings(action='ignore')
 # 更改相对路径
 path = "D:\TFCode\FundInv"
 os.chdir(path)
+config = configparser.ConfigParser()
+config.read("config.ini", encoding="utf-8")
+N = config.get("others", "N")
 
 def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     """
     股基的短期标签变成长期标签，包括行业和大小盘和成长价值风格、共振因子、集中度五个标签
     :param lastYearDate:
     :param lastQuarDate:
-    :param apikey: list，
+    :param apikey: list
     :param flag: 1-行业；2-风格；3-大小盘；4-共振因子， 5-集中度
     :return: 两列的df
     """
@@ -61,9 +65,10 @@ def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
                 StyleDF = pd.merge(StyleDF, df1, on='thscode')
 
         X_columns = [col for col in StyleDF.columns if col.startswith("Xstyle")]
-        StyleDF['风格标签'] = StyleDF.apply(lambda row: f"稳定{row[X_columns[0]]}" if all(
-            row[col] == row[X_columns[0]] for col in X_columns) else '风格轮动基金', axis=1)
-        StyleDF.to_csv("output/StockFund/marketvalue_Stable.csv")
+        StyleDF['风格标签'] = StyleDF.apply(lambda row: "稳定" + row[X_columns].value_counts().index[0] if row[X_columns].value_counts().iloc[0] >= 5 else '风格轮动基金', axis=1)
+        # StyleDF['风格标签'] = StyleDF.apply(lambda row: f"稳定{row[X_columns[0]]}" if all(
+        #     row[col] == row[X_columns[0]] for col in X_columns) else '风格轮动基金', axis=1)
+        StyleDF.to_csv("output/StockFund/style_Stable.csv")
         return StyleDF[['thscode', '风格标签']]
 
     elif flag == 3:
@@ -79,7 +84,7 @@ def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
         Y_columns = [col for col in StyleDF.columns if col.startswith("Ystyle")]
         StyleDF['大小盘标签'] = StyleDF.apply(lambda row: f"稳定{row[Y_columns[0]]}" if all(
             row[col] == row[Y_columns[0]] for col in Y_columns) else '风格轮动基金', axis=1)
-        StyleDF.to_csv("output/StockFund/style_Stable.csv")
+        StyleDF.to_csv("output/StockFund/marketvalue_Stable.csv")
         return StyleDF[['thscode', '大小盘标签']]
 
     elif flag == 4:
@@ -184,7 +189,7 @@ def Getbondfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     if flag == 4:
         # 债券种类
         for i in range(6):
-            df1 = getbondtype(repDateHY[-(i + 1)], apikey)
+            df1 = getbondtype(repDateQ[-(i + 1)], apikey)
             df1.columns = ['thscode', 'bondfundtype' + repDateHY[-(i + 1)]]
             if i == 0:
                 df2 = df1

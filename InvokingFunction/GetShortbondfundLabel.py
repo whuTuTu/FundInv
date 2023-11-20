@@ -13,7 +13,7 @@ import pandas as pd
 import warnings
 import os
 from InvokingFunction.GetData import GetbfundcompanyData, GetbfunddurationData, GetbfundleverData, GetbfundbondData, \
-    GetbondTHScode, GetbondType
+    GetbondTHScode, GetbondType, GetbfundtyepData
 from InvokingFunction.GetGFunction import getchunzhaicode, df2list
 warnings.filterwarnings(action='ignore')  # 导入warnings模块，并指定忽略代码运行中的警告信息
 # 更改相对路径
@@ -57,7 +57,6 @@ def getduration(endDate, apikey):
     chunzhai4df.iloc[-one_third:, chunzhai4df.columns.get_loc('久期标签')] = '短'
     return chunzhai4df[['thscode', '久期标签']]
 
-
 def getlever(endDate, apikey):
     """
     纯债基金获得杠杆比例标签，三等分点
@@ -75,9 +74,22 @@ def getlever(endDate, apikey):
     chunzhai4df.iloc[-one_third:, chunzhai4df.columns.get_loc('杠杆比例标签')] = '小'
     return chunzhai4df[['thscode', '杠杆比例标签']]
 
-
 def getbondtype(endDate, apikey):
     """
+    纯债基金通过底层持仓获取利率债和信用债标签
+    :param endDate:
+    :param apikey:
+    :return:
+    """
+    chunzhai4list = getchunzhaicode()
+    cunzhaiFundRatioDF = GetbfundtyepData(chunzhai4list,endDate, apikey)  # 获取数据
+    cunzhaiFundRatioDF['利率债比例'] = cunzhaiFundRatioDF['ths_nb_mv_to_bond_invest_mv_fund']+cunzhaiFundRatioDF['ths_zcxjrzszzzqtzszb_fund']+cunzhaiFundRatioDF['ths_cbb_to_bond_invest_mv_fund']
+    cunzhaiFundRatioDF['bondfundtype'] = cunzhaiFundRatioDF.apply(lambda x: '利率债' if x['利率债比例'] >= 50 else '信用债', axis=1)
+    return cunzhaiFundRatioDF[['thscode', 'bondfundtype']]
+
+def getbondtype4feiqi(endDate, apikey):
+    """
+    （废弃）
     纯债基金通过底层持仓获取利率债和信用债标签
     :param endDate:
     :param apikey:
@@ -125,3 +137,30 @@ def getdingkai():
     chunzhai.drop('Unnamed: 0', axis=1, inplace=True)
     chunzhai['是否为定开'] = chunzhai['ths_fund_short_name_fund'].str.contains("定开").astype(int)
     return chunzhai[['thscode', '是否为定开']]
+
+def getbondtype4test(endDate, apikey):
+    """
+    测试用
+    :param endDate:
+    :param apikey:
+    :return:
+    """
+    chunzhai4list = getchunzhaicode()
+    cunzhaiFundRatioDF = GetbfundbondData(chunzhai4list, endDate, apikey)  # 获取数据
+    cunzhaiFundRatioDF.rename(columns={'p00483_f002': 'thscode', 'p00483_f008': 'ratio'}, inplace=True)
+    cunzhaiFundRatioDF['ratio_num'] = pd.to_numeric(cunzhaiFundRatioDF['ratio'], errors='coerce')
+    bond4list = cunzhaiFundRatioDF['thscode'].dropna().unique().tolist()
+    bondcode4df = GetbondTHScode(bond4list)  # THS债券代码转换为有后缀
+    bondcode4df['first_code'] = bondcode4df['thscode'].str.split(',').str[0]
+    bondcode4list = df2list(bondcode4df.iloc[:, [2]])
+    bond4df = GetbondType(bondcode4list, endDate, apikey)  # 获取债券对应的分类数据
+
+    # 合并
+    cunzhaiFundRatioDF.rename(columns={'thscode': 'seccode'}, inplace=True)
+    bondcode4df.rename(columns={'thscode': 'allcode', 'first_code': 'thscode'}, inplace=True)
+    bondcode4df = pd.merge(bondcode4df, bond4df, on='thscode', how='left')
+    cunzhaiFundRatioDF = pd.merge(cunzhaiFundRatioDF, bondcode4df, on='seccode', how='left') # 合并数据
+
+    result = cunzhaiFundRatioDF.groupby(['jydm',])['ratio_num'].sum().reset_index()
+    result = result.sort_values(by='ratio_num', ascending=False)
+    return result[['jydm','ratio_num']]
