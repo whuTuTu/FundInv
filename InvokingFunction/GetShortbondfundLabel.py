@@ -135,7 +135,8 @@ def getdingkai():
     """
     chunzhai = pd.read_csv("output/ChunzhaiFund/chunzhai_filter.csv")
     chunzhai.drop('Unnamed: 0', axis=1, inplace=True)
-    chunzhai['是否为定开'] = chunzhai['ths_fund_short_name_fund'].str.contains("定开").astype(int)
+    pattern = re.compile("定开|定期开放|定期")
+    chunzhai['是否为定开'] = chunzhai['ths_fund_short_name_fund'].str.contains(pattern).astype(int)
     return chunzhai[['thscode', '是否为定开']]
 
 def getbondtype4test(endDate, apikey):

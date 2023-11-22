@@ -139,16 +139,17 @@ def getindex(flag,yesend = True, beginDate=beginDate, lastQuarDate=lastQuarDate,
 
     if flag == 3:
         fundcode4list = getchunzhaicode()
-        len_time = len(QuanDate) - 1
+        len_time = len(HYearDate) - 1
         for i in range(len_time):
             MyFundDF = getbondtype(QuanDate[i], apikey)
-            NetValue = GetbfundnetvalueData(fundcode4list, QuanDate[i], QuanDate[i + 1], apikey)  # 获取半年的净值数据
+            NetValue = GetbfundnetvalueData(fundcode4list, HYearDate[i], HYearDate[i + 1], apikey)  # 获取半年的净值数据
             NetValue.set_index('time', inplace=True)
             partfundcode4list = NetValue.columns
             MyFundDF = MyFundDF[MyFundDF['thscode'].isin(partfundcode4list)]
 
             # 分类基金
-            types = ['信用债', '利率债']
+            # types = ['信用债', '利率债']
+            types = ['信用债']
             print(types)
             for j in range(len(types)):
                 fund0 = MyFundDF[MyFundDF['bondfundtype'] == types[j]].iloc[:, [0]].values.tolist()

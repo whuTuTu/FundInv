@@ -28,7 +28,7 @@ endDate = config.get("time", "endDate")
 lastYearDate = config.get("time", "lastYearDate")
 lastQuarDate = config.get("time", "lastQuarDate")
 apikey = [config.get("apikey", "ID2"),config.get("apikey", "password2")]
-choice = 'stock'
+choice = 'bond'
 
 # ------------------------------------------以下为代码--------------------------------------------------------
 if choice == 'stock':

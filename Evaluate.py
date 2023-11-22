@@ -14,6 +14,7 @@ import configparser
 from InvokingFunction.GetData import GetbfundnetvalueData, GetsfundnetvalueData
 from InvokingFunction.GetGFunction import exchangedate1, getQtime4liet, getHYtime4list, getchunzhaicode, getstockfundcode
 from InvokingFunction.GetQuantitativeIndex import calculate_excess_cum_returns, calculate_excess_sharpe_ratio
+from InvokingFunction.GetShortbondfundLabel import getdingkai
 from InvokingFunction.Getindex import getindex
 from InvokingFunction.Short2Long import Getstockfund4Long, Getbondfund4Long
 
@@ -24,7 +25,7 @@ beginDate = config.get("time", "beginDate")
 endDate = config.get("time", "endDate")
 lastYearDate = config.get("time", "lastYearDate")
 lastQuarDate = config.get("time", "lastQuarDate")
-apikey = [config.get("apikey", "ID1"),config.get("apikey", "password1")]
+apikey = [config.get("apikey", "ID2"),config.get("apikey", "password2")]
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
 choice = 'chunzhai'
 # choice = 'stock'
@@ -79,15 +80,19 @@ if choice == 'stock':
         # 长期指标：滚动三年的数据
         list1 = []
         list2 = []
-        for onetime in HYearDate[-8::]:
+        for onetime in QuanDate[-11:-1]:
+            print('--------------'+onetime+'------------------')
             n1 = 3  # 滚动三年
             start_date3Y = str(int(onetime[0:4]) - n1) + onetime[4::]
             end_date = onetime
             onenetvalue4list = NetValueDF.loc[exchangedate1(start_date3Y):exchangedate1(end_date), onecode].values.tolist()
+            # NetValueDF.loc[exchangedate1(start_date3Y):exchangedate1(end_date), onecode].to_csv("NetValueDF.csv")
             if ind4char == '稳定行业均衡基金':
                 indindexnetvalue4list = index4style.loc[exchangedate1(start_date3Y):exchangedate1(end_date), style4char].values.tolist()
+                # index4style.loc[exchangedate1(start_date3Y):exchangedate1(end_date), style4char].to_csv("indindexnetvalue4list.csv")
             else:
                 indindexnetvalue4list = index4ind.loc[exchangedate1(start_date3Y):exchangedate1(end_date), ind4char].values.tolist()
+                # index4ind.loc[exchangedate1(start_date3Y):exchangedate1(end_date), ind4char].to_csv("index4ind.csv")
             cumrate3y4float = calculate_excess_cum_returns(onenetvalue4list, indindexnetvalue4list)
             sharatio4float = calculate_excess_sharpe_ratio(onenetvalue4list, indindexnetvalue4list)
             list1.append(cumrate3y4float[-1])  # 一个基金8期的滚动累计收益率
@@ -129,7 +134,7 @@ if choice == 'chunzhai':
 
     # 基金债券种类
     bondtype4df = Getbondfund4Long(lastYearDate, lastQuarDate, apikey, flag=4)
-
+    dingkai4df = getdingkai()
     # 指数的走势数据
     index4ind = getindex(flag=3)  # 行业走势
 
@@ -141,36 +146,57 @@ if choice == 'chunzhai':
     for onecode in partfundcode4list:
         # 排除不存在标签的基金
         if onecode in bondtype4df['thscode'].values:
-            ind4char = bondtype4df.loc[bondtype4df['thscode'] == onecode, 'bondtype'].iloc[0]
+            ind4char = bondtype4df.loc[bondtype4df['thscode'] == onecode, 'bondtype'].iloc[0][2::]
+            dingkai4num = dingkai4df.loc[dingkai4df['thscode'] == onecode, '是否为定开'].iloc[0]
         else:
             print(f"The value {onecode} does not exist in 'thscode' column.")
             continue
 
         partfundcode4list2.append(onecode)
-
         # 长期指标：滚动三年的数据
         list1 = []
         list2 = []
-        for onetime in QuanDate[-8::]:
-            n1 = 3  # 滚动三年
-            start_date3Y = str(int(onetime[0:4]) - n1) + onetime[4::]
-            end_date = onetime
-            onenetvalue4list = NetValueDF.loc[exchangedate1(start_date3Y):exchangedate1(end_date),onecode].values.tolist()
-            indindexnetvalue4list = index4ind.loc[exchangedate1(start_date3Y):exchangedate1(end_date),ind4char].values.tolist()
-            cumrate3y4float = calculate_excess_cum_returns(onenetvalue4list, indindexnetvalue4list)
-            sharatio4float = calculate_excess_sharpe_ratio(onenetvalue4list, indindexnetvalue4list)
-            list1.append(cumrate3y4float[-1])  # 一个基金8期的滚动累计收益率
-            list2.append(sharatio4float)
+        if dingkai4num == 0:
+            for onetime in QuanDate[-8:-1]:
+                n1 = 3  # 滚动三年
+                start_date3Y = str(int(onetime[0:4]) - n1) + onetime[4::]
+                end_date = onetime
+                onenetvalue4list = NetValueDF.loc[exchangedate1(start_date3Y):exchangedate1(end_date),onecode].values.tolist()
+                indindexnetvalue4list = index4ind.loc[exchangedate1(start_date3Y):exchangedate1(end_date),ind4char].values.tolist()
+                cumrate3y4float = calculate_excess_cum_returns(onenetvalue4list, indindexnetvalue4list)
+                sharatio4float = calculate_excess_sharpe_ratio(onenetvalue4list, indindexnetvalue4list)
+                list1.append(cumrate3y4float[-1])
+                list2.append(sharatio4float)
+        else:
+            NetValueDF[onecode] = NetValueDF[onecode].fillna(method='ffill')
+
+            for onetime in QuanDate[-8:-1]:
+                n1 = 3  # 滚动三年
+                start_date3Y = str(int(onetime[0:4]) - n1) + onetime[4::]
+                end_date = onetime
+                onenetvalue4df = NetValueDF.loc[exchangedate1(start_date3Y):exchangedate1(end_date),[onecode]]
+                indindexnetvalue4df = index4ind.loc[exchangedate1(start_date3Y):exchangedate1(end_date),[ind4char]]
+                onenetvalue4df.reset_index(inplace=True)
+                indindexnetvalue4df.reset_index(inplace=True)
+                onenetvalue4df['time'] = pd.to_datetime(onenetvalue4df['time'])
+                indindexnetvalue4df['time'] = pd.to_datetime(indindexnetvalue4df['time'])
+                onenetvalue4df = onenetvalue4df[onenetvalue4df['time'].dt.dayofweek == 4]
+                indindexnetvalue4df = indindexnetvalue4df[indindexnetvalue4df['time'].dt.dayofweek == 4]
+                onenetvalue4list = onenetvalue4df[onecode].values.tolist()
+                indindexnetvalue4list = indindexnetvalue4df['信用债'].values.tolist()
+                cumrate3y4float = calculate_excess_cum_returns(onenetvalue4list, indindexnetvalue4list)
+                sharatio4float = calculate_excess_sharpe_ratio(onenetvalue4list, indindexnetvalue4list)
+                list1.append(cumrate3y4float[-1])
+                list2.append(sharatio4float)
+
 
         cumrate3y4list.append(sum(list1) / len(list1))
         shaperatio3y4list.append(sum(list2) / len(list2))
-
     quantitative4df = pd.DataFrame({
         'thscode': partfundcode4list2,
         '3年滚动累计超额收益率均值': cumrate3y4list,
         '3年滚动超额夏普比例': shaperatio3y4list
     })
-
     quantitative4df['3年滚动累计超额收益率均值排名'] = quantitative4df['3年滚动累计超额收益率均值'].rank(method='first')  # 升序排列，数值较小的获得较低的排名
     quantitative4df['3年滚动超额夏普比例排名'] = quantitative4df['3年滚动超额夏普比例'].rank(method='first')
     quantitative4df['总得分'] = quantitative4df.iloc[:, -2::].mean(axis=1)
@@ -179,4 +205,4 @@ if choice == 'chunzhai':
     # 读取基金基本信息数据
     basicdata4df = pd.read_csv("output/ChunzhaiFund/chunzhai_label.csv")
     quantitative4df = pd.merge(basicdata4df, quantitative4df, on='thscode', how='right')
-    quantitative4df.to_csv("output/StockFund/债券基金打分.csv")
+    quantitative4df.to_csv("output/ChunzhaiFund/债券基金打分.csv")
