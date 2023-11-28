@@ -36,8 +36,8 @@ lastQuarDate = config.get("time", "lastQuarDate")
 apikey = [config.get("apikey", "ID2"),config.get("apikey", "password2")]
 
 thsLogin = THS_iFinDLogin(apikey[0], apikey[1])
-style_flag = False
-ind_flag = False
+style_flag = True
+ind_flag = True
 types_flag = True
 
 # ------------------------------------------生成相关时间变量--------------------------------------------------------
@@ -152,7 +152,7 @@ if types_flag:
         MyFundDF = MyFundDF[MyFundDF['thscode'].isin(partfundcode4list)]
 
         # 分类基金
-        types = ['信用债', '利率债']
+        types = ['信用债']
         print(types)
         for j in range(len(types)):
             fund0 = MyFundDF[MyFundDF['bondfundtype'] == types[j]].iloc[:, [0]].values.tolist()

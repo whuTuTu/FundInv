@@ -21,7 +21,6 @@ path = "D:\TFCode\FundInv"
 os.chdir(path)
 config = configparser.ConfigParser()
 config.read("config.ini", encoding="utf-8")
-N = config.get("others", "N")
 
 def Getstockfund4Long(lastYearDate, lastQuarDate, apikey, flag):
     """
