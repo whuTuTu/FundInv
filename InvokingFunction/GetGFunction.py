@@ -9,10 +9,7 @@
 """
 # 载入包
 import pandas as pd
-import os
-# 更改相对路径
-path = "D:\TFCode\FundInv"
-os.chdir(path)
+
 
 def exchangedate1(YearDate):
     """

@@ -116,12 +116,13 @@ def indexreturn2quantitative(types, ReturnDF):
 
     for col_name in types:
         onenetvalue4list = ReturnDF[col_name].tolist()
+        print(ReturnDF)
         print(onenetvalue4list)
 
         # 年初至今
-        cumreturnY4list.append(calculate_one_cum_return(onenetvalue4list))
-        maxdrawdownY4list.append(calculate_max_drawdown(onenetvalue4list))
-        shaperatioY4list.append(calculate_sharpe_ratio(onenetvalue4list))
+        cumreturnY4list.append(calculate_one_cum_return(onenetvalue4list[243::]))
+        maxdrawdownY4list.append(calculate_max_drawdown(onenetvalue4list[243::]))
+        shaperatioY4list.append(calculate_sharpe_ratio(onenetvalue4list[243::]))
 
         # 滚动一个月
         cumreturnM4list.append(calculate_one_cum_return(onenetvalue4list[-30::]))
@@ -144,7 +145,7 @@ def indexreturn2quantitative(types, ReturnDF):
         '本周累计收益': cumreturnW4list,
         '本周最大回撤': maxdrawdownW4list,
         '本周夏普比例': shaperatioW4list,
-    }
+            }
     quantitative4df = pd.DataFrame(data)
     return quantitative4df
 

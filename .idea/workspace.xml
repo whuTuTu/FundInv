@@ -7,12 +7,14 @@
     <list default="true" id="f32af453-17d9-40b7-ba9d-35d24d69f0f8" name="更改" comment="主动基金vs被动基金顺序更正">
       <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/Short2Long.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FundSum.py" beforeDir="false" afterPath="$PROJECT_DIR$/FundSum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetGFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetGFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/InvokingFunction/GetSFunction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/StockFundData/Ratio/HYratio20230630.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/2023中报（20231011）/基金评分汇总2023.11.17.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/output/2023中报（20231011）/基金评分汇总2023.11.17.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/2023中报（20231011）/公募指数更新2023.11.17.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/2023中报（20231011）/公募指数更新2023.11.24.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/2023中报（20231011）/基金评分汇总2023.11.17.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/ChunzhaiFund/债券种类指数.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/StockFund/industry_Stable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/industry_Stable.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/StockFund/行业指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/行业指数.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/StockFund/风格指数.html" beforeDir="false" afterPath="$PROJECT_DIR$/output/StockFund/风格指数.html" afterDir="false" />
     </list>
@@ -77,7 +79,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/TFCode/FundInv/InvokingFunction&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CodeParttime/PYlearning&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;thief.id&quot;,
     &quot;two.files.diff.last.used.folder&quot;: &quot;D:/TFCode/FundInv/output/【公募基金】2023中报（20231011）.zip&quot;
   }
@@ -443,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700630039759</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="指数更新1114">
+      <option name="closed" value="true" />
+      <created>1701136871576</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1701136871576</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -467,6 +478,18 @@
     <MESSAGE value="更新" />
     <MESSAGE value="基金评分功能更新" />
     <MESSAGE value="主动基金vs被动基金顺序更正" />
-    <option name="LAST_COMMIT_MESSAGE" value="主动基金vs被动基金顺序更正" />
+    <MESSAGE value="指数更新1114" />
+    <option name="LAST_COMMIT_MESSAGE" value="指数更新1114" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/InvokingFunction/Short2Long.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
